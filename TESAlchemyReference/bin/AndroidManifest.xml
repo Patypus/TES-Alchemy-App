@@ -6,22 +6,49 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <!-- Start of activity listing -->
         <activity
-            android:name="org.pat.howell.tes.alchemyreference.MainActivity"
+            android:name="org.pat.howell.tes.alchemyreference.activities.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.EffectSearchActivity"
+            android:label="@string/search_by_effect"
+            >
+            <intent-filter >
+                <action android:name="tes.alchemyreference.EFFECTSEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>    
+        </activity>
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.IngredientSearchActivity"
+            android:label="@string/search_for_ingredient"
+            >
+            <intent-filter >
+                <action android:name="tes.alchemyreference.INGREDIENTSEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>    
+        </activity>
+        <!-- End of activity listing -->
+        
+        <!-- Start of content provider listing -->
+        <provider android:name="AlchemyProvider"
+            	  android:authorities="org.pat.howell.tes.alchemyreference.data.AlchemyDataProvider"
+            	  android:multiprocess="true"
+                  android:process=":dataProcess"
+                  android:exported="false" />
+        <!-- End of content provider listing -->
     </application>
 
 </manifest>

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity" >
+
+    <TextView
+        android:id="@+id/version_title_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/version_title"
+        android:textSize="28sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp" 
+        />
+    
+    <TextView 
+        android:id="@+id/menu_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/version_title_view"
+        android:text="@string/menu_title"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/menu_button_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/setch_by_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/search_by_label_text"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/search_by_effect_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="onEffectClicked"
+            android:text="@string/effect_button_text" />
+
+        <Button
+            android:id="@+id/search_ingredient_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="onIngredientClicked"
+            android:text="@string/ingredient_button_text" />
+    </LinearLayout>
+    
+</RelativeLayout>

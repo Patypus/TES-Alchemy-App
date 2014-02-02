@@ -24,39 +24,65 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f080008;
+        public static final int menu_button_layout=0x7f080004;
+        public static final int menu_title=0x7f080003;
+        public static final int search_by_effect_button=0x7f080006;
+        public static final int search_by_effect_title=0x7f080000;
+        public static final int search_for_ingredient_title=0x7f080001;
+        public static final int search_ingredient_button=0x7f080007;
+        public static final int setch_by_label=0x7f080005;
+        public static final int version_title_view=0x7f080002;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
+        public static final int effect_search_activity=0x7f030000;
+        public static final int ingredient_search_activity=0x7f030001;
+        public static final int menu_activity=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f070000;
     }
     public static final class string {
-        public static final int DatabaseName=0x7f040000;
-        public static final int EffectFourColumn=0x7f040007;
+        public static final int DatabaseName=0x7f040001;
+        public static final int EffectFourColumn=0x7f040008;
         /**  Column titles 
          */
-        public static final int EffectIdColumn=0x7f040009;
-        public static final int EffectOneColumn=0x7f040004;
-        public static final int EffectThreeColumn=0x7f040006;
-        public static final int EffectTitleColumn=0x7f04000a;
-        public static final int EffectTwoColumn=0x7f040005;
+        public static final int EffectIdColumn=0x7f04000a;
+        public static final int EffectOneColumn=0x7f040005;
+        public static final int EffectThreeColumn=0x7f040007;
+        public static final int EffectTitleColumn=0x7f04000b;
+        public static final int EffectTwoColumn=0x7f040006;
         /**  Strings relating to the Effects table 
  Table name 
          */
-        public static final int EffectsTable=0x7f040008;
+        public static final int EffectsTable=0x7f040009;
         /**  Column titles 
          */
-        public static final int IngredientIdColumn=0x7f040002;
-        public static final int IngredientNameColumn=0x7f040003;
+        public static final int IngredientIdColumn=0x7f040003;
+        public static final int IngredientNameColumn=0x7f040004;
         /**  Strings relating to the Ingredients table 
  Table name 
          */
-        public static final int IngredientsTable=0x7f040001;
-        public static final int action_settings=0x7f04000c;
-        public static final int app_name=0x7f04000b;
-        public static final int hello_world=0x7f04000d;
+        public static final int IngredientsTable=0x7f040002;
+        public static final int action_settings=0x7f04000d;
+        public static final int app_name=0x7f04000c;
+        public static final int effect_button_text=0x7f040010;
+        public static final int ingredient_button_text=0x7f040011;
+        /**  Menu Activity strings 
+         */
+        public static final int menu_title=0x7f04000e;
+        /**  Effect Search Activity strings 
+         */
+        public static final int search_by_effect=0x7f040012;
+        public static final int search_by_effect_title=0x7f040013;
+        public static final int search_by_label_text=0x7f04000f;
+        /**  Ingredient Search Activity strings 
+         */
+        public static final int search_for_ingredient=0x7f040014;
+        public static final int search_for_ingredient_title=0x7f040015;
+        /**  Menu Activity brandable strings 
+         */
+        public static final int version_title=0x7f040000;
     }
     public static final class style {
         /** 

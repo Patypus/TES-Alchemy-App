@@ -3,6 +3,18 @@
 
     <string name="app_name">TES Alchemy Reference</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    
+    <!-- Menu Activity strings -->
+    <string name="menu_title">Alchemy Reference</string>
+    <string name="search_by_label_text">Search by:</string>
+    <string name="effect_button_text">Effect</string>
+    <string name="ingredient_button_text">Ingredient</string>
+    
+    <!-- Effect Search Activity strings -->
+    <string name="search_by_effect">Search by Effect</string>
+    <string name="search_by_effect_title">Effect</string>
 
+    <!-- Ingredient Search Activity strings -->
+    <string name="search_for_ingredient">Search for Ingredient</string>
+    <string name="search_for_ingredient_title">Ingredient</string>
 </resources>
