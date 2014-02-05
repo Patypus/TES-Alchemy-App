@@ -8,12 +8,37 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/search_for_ingredient"
-        android:textSize="22sp"
+        android:textSize="25sp"
+        android:textColor="@color/text_colour"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp" 
         />
+	
+	<ImageView 
+        android:id="@+id/ingredient_search_back_button"
+        android:layout_alignBottom="@id/search_for_ingredient_title"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignTop="@id/search_for_ingredient_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_button_back"
+        android:contentDescription="@string/back_button"
+        android:layout_marginRight="10dp"
+        android:onClick="onBackClicked"
+        />
+	
+	<ListView 
+	    android:id="@+id/ingredient_list"
+	    android:layout_below="@id/search_for_ingredient_title"
+	    android:layout_marginTop="14dp"
+	    android:layout_marginBottom="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    />
     
     
 </RelativeLayout>

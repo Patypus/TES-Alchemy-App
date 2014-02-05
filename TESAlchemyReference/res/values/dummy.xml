@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="effects_dummy_array">
+	    <item>Restore Fatigue</item>
+	    <item>Fortify Health</item>
+	    <item>Damage Magica</item>
+	</string-array>
+	
+	<string-array name="ingredients_dummy_data">
+	    <item>Fire Salts</item>
+	    <item>Red Mountain Flower</item>
+	    <item>Bonemeal</item>
+	</string-array>
+</resources>

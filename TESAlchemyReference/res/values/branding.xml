@@ -2,4 +2,6 @@
 <resources>
     <!-- Menu Activity brandable strings -->
     <string name="version_title">TES</string> 
+    
+    <color name="text_colour">#000000</color>
 </resources>

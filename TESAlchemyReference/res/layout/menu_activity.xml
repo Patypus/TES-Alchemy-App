@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/version_title"
         android:textSize="28sp"
+        android:textColor="@color/text_colour"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:gravity="center"
@@ -25,6 +26,7 @@
         android:layout_below="@id/version_title_view"
         android:text="@string/menu_title"
         android:textSize="22sp"
+        android:textColor="@color/text_colour"
         android:layout_marginTop="10dp"
         />
 
