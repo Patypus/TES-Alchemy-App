@@ -29,8 +29,7 @@ public class IngredientSearchActivity extends Activity {
 	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
-        requestWindowFeature( Window.FEATURE_NO_TITLE );
+		super.onCreate( savedInstanceState );
         setContentView( R.layout.ingredient_search_activity );
         ingredientsList = (ListView) findViewById(R.id.ingredient_list );
         populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
@@ -66,7 +65,8 @@ public class IngredientSearchActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View selectedItem, int arg2, long arg3) {
 				TextView item = (TextView) selectedItem;
 				String selectedItemName = item.getText().toString();
-				Intent intent = new Intent("thing");
+				Intent intent = new Intent("tes.alchemyreference.EFFECT");
+				startActivity( intent );
 			}
 		});
 	}
