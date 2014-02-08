@@ -3,6 +3,7 @@ package org.pat.howell.tes.alchemyreference.activities;
 import java.util.ArrayList;
 
 import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
@@ -23,15 +25,16 @@ import android.widget.TextView;
  * each ingredient.
  */
 public class IngredientSearchActivity extends Activity {
-
+	
 	/** The list of ingredients for searching in the activity */
 	private ListView ingredientsList;
+	
 	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
         setContentView( R.layout.ingredient_search_activity );
-        ingredientsList = (ListView) findViewById(R.id.ingredient_list );
+        ingredientsList = (ListView) findViewById( R.id.ingredient_list );
         populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
         setOnItemClickHandlerForList();
     }
@@ -51,7 +54,7 @@ public class IngredientSearchActivity extends Activity {
 		finish();
 	}
 	
-	private void populateIngredientsList(String[] ingredients)
+	private void populateIngredientsList( String[] ingredients )
 	{
 		ingredientsList.setAdapter( new ArrayAdapter<String>( this, 
 															  android.R.layout.simple_list_item_1, 
@@ -60,14 +63,6 @@ public class IngredientSearchActivity extends Activity {
 	
 	private void setOnItemClickHandlerForList()
 	{
-		ingredientsList.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View selectedItem, int arg2, long arg3) {
-				TextView item = (TextView) selectedItem;
-				String selectedItemName = item.getText().toString();
-				Intent intent = new Intent("tes.alchemyreference.EFFECT");
-				startActivity( intent );
-			}
-		});
+		ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this ) );
 	}
 }

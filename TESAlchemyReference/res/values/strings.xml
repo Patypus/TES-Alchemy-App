@@ -18,6 +18,9 @@
     <string name="search_for_ingredient">Search for Ingredient</string>
     <string name="search_for_ingredient_title">Ingredient</string>
     
+    <!-- Ingredient Activity strings -->
+    <string name="default_title">Not set</string>
+    
     <!-- Common Activity strings -->
     <string name="back_button">Back button</string>
 </resources>

@@ -41,6 +41,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>    
         </activity>
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.IngredientActivity"
+            android:label="@string/search_for_ingredient"
+            >
+            <intent-filter >
+                <action android:name="tes.alchemyreference.EFFECT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>    
+        </activity>
+        
         <!-- End of activity listing -->
         
         <!-- Start of content provider listing -->
