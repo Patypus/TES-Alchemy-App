@@ -28,5 +28,48 @@
         android:layout_marginRight="10dp"
         android:onClick="onBackClicked"
         />
+	
+	<ListView
+	    android:id="@+id/effects_of_ingredient_list"
+	    android:layout_below="@id/ingredient_title"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginTop="15dp"
+	    />
+	
+	<TextView 
+	    android:id="@+id/matching_ingredients_label"
+	    android:layout_below="@id/effects_of_ingredient_list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="@color/text_colour"
+	    android:textSize="18sp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginTop="10dp"
+	    android:text="@string/ingredient_matching_effect"
+	    />
+	<TextView 
+	    android:id="@+id/choosen_effect_display"
+	    android:layout_below="@id/matching_ingredients_label"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="@color/text_colour"
+	    android:textSize="18sp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginTop="8dp"
+	    android:text="@string/select_effect_prompt"
+	    />
+	
+	<ListView 
+	    android:id="@+id/matching_ingredients_list"
+	    android:layout_below="@id/choosen_effect_display"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="10dp"
+	    />
 
 </RelativeLayout>

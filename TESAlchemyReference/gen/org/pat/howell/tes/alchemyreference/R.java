@@ -32,22 +32,26 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000f;
+        public static final int action_settings=0x7f0a0013;
+        public static final int choosen_effect_display=0x7f0a0008;
         public static final int effect_choice_spinner=0x7f0a0002;
         public static final int effect_search_back_button=0x7f0a0001;
+        public static final int effects_of_ingredient_list=0x7f0a0006;
         public static final int ingredient_back_button=0x7f0a0005;
-        public static final int ingredient_list=0x7f0a0008;
-        public static final int ingredient_search_back_button=0x7f0a0007;
+        public static final int ingredient_list=0x7f0a000c;
+        public static final int ingredient_search_back_button=0x7f0a000b;
         public static final int ingredient_title=0x7f0a0004;
         public static final int ingredients_with_choosen_effect=0x7f0a0003;
-        public static final int menu_button_layout=0x7f0a000b;
-        public static final int menu_title=0x7f0a000a;
-        public static final int search_by_effect_button=0x7f0a000d;
+        public static final int matching_ingredients_label=0x7f0a0007;
+        public static final int matching_ingredients_list=0x7f0a0009;
+        public static final int menu_button_layout=0x7f0a000f;
+        public static final int menu_title=0x7f0a000e;
+        public static final int search_by_effect_button=0x7f0a0011;
         public static final int search_by_effect_title=0x7f0a0000;
-        public static final int search_for_ingredient_title=0x7f0a0006;
-        public static final int search_ingredient_button=0x7f0a000e;
-        public static final int setch_by_label=0x7f0a000c;
-        public static final int version_title_view=0x7f0a0009;
+        public static final int search_for_ingredient_title=0x7f0a000a;
+        public static final int search_ingredient_button=0x7f0a0012;
+        public static final int setch_by_label=0x7f0a0010;
+        public static final int version_title_view=0x7f0a000d;
     }
     public static final class layout {
         public static final int effect_search_activity=0x7f030000;
@@ -84,12 +88,13 @@ public final class R {
         public static final int app_name=0x7f04000c;
         /**  Common Activity strings 
          */
-        public static final int back_button=0x7f040017;
+        public static final int back_button=0x7f040019;
         /**  Ingredient Activity strings 
          */
         public static final int default_title=0x7f040016;
         public static final int effect_button_text=0x7f040010;
         public static final int ingredient_button_text=0x7f040011;
+        public static final int ingredient_matching_effect=0x7f040017;
         /**  Menu Activity strings 
          */
         public static final int menu_title=0x7f04000e;
@@ -102,6 +107,7 @@ public final class R {
          */
         public static final int search_for_ingredient=0x7f040014;
         public static final int search_for_ingredient_title=0x7f040015;
+        public static final int select_effect_prompt=0x7f040018;
         /**  Menu Activity brandable strings 
          */
         public static final int version_title=0x7f040000;

@@ -2,12 +2,10 @@ package org.pat.howell.tes.alchemyreference.activities;
 
 import org.pat.howell.tes.alchemyreference.R;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;

@@ -20,6 +20,8 @@
     
     <!-- Ingredient Activity strings -->
     <string name="default_title">Not set</string>
+    <string name="ingredient_matching_effect">Ingredients with the same effect:</string>
+    <string name="select_effect_prompt">Select an effect</string>
     
     <!-- Common Activity strings -->
     <string name="back_button">Back button</string>
