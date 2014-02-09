@@ -43,5 +43,4 @@ public class AlchemyDataProvider extends ContentProvider {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }

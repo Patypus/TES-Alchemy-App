@@ -50,7 +50,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>    
         </activity>
-        
         <!-- End of activity listing -->
         
         <!-- Start of content provider listing -->
