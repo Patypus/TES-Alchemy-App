@@ -53,7 +53,7 @@
         <!-- End of activity listing -->
         
         <!-- Start of content provider listing -->
-        <provider android:name="AlchemyProvider"
+        <provider android:name="AlchemyDataProvider"
             	  android:authorities="org.pat.howell.tes.alchemyreference.data.AlchemyDataProvider"
             	  android:multiprocess="true"
                   android:process=":dataProcess"

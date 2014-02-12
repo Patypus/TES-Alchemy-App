@@ -5,6 +5,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
+/**
+ * Content provider for the alchemy database in the application
+ * Used to control access to the database.
+ */
 public class AlchemyDataProvider extends ContentProvider {
 
 	@Override
@@ -42,5 +46,10 @@ public class AlchemyDataProvider extends ContentProvider {
 	public int update(Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	public void shutdown() {
+		super.shutdown();
 	}
 }
