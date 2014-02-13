@@ -25,11 +25,7 @@ public class ContentConstants {
 	public static final Uri EFFECT_URI = Uri.parse( EFFECT_URL );
 	
 	/** Key for all ingredients requests*/
-	public static final int ALL_INGREDIENTS = 10;
+	public static final int INGREDIENTS = 10;
 	/** Key for all effects requests */
-	public static final int ALL_EFFECTS = 20;
-	/** Key for a query using a specific effect name */
-	public static final int EFFECT_NAME = 30;
-	/** Key for a query using a specific ingredient name */
-	public static final int INGREDIENT_NAME = 40;
+	public static final int EFFECTS = 20;
 }

@@ -15,10 +15,25 @@ public class UriManager {
 		_matcher = new UriMatcher( UriMatcher.NO_MATCH );
 		_matcher.addURI( ContentConstants.PROVIDER_NAME,
 						 ContentConstants.EFFECT_TABLE_KEY,
-						 ContentConstants.ALL_EFFECTS );
+						 ContentConstants.EFFECTS );
+		_matcher.addURI( ContentConstants.PROVIDER_NAME,
+					     ContentConstants.INGREDIENT_TABLE_KEY,
+					     ContentConstants.INGREDIENTS );
 	}
 	
+	/**
+	 * Method to match Uri's know to the system to their action keys. Throws an illegal 
+	 * argument exception if the URI is not recognised.
+	 * @param uri - The Uri to match
+	 * @return - int action key that the Uri corresponds to
+	 */
 	public int match( Uri uri ) {
-		return _matcher.match( uri );
+		int result = _matcher.match( uri );
+		if ( result != -1 ) {
+			return result;
+		}
+		else {
+			throw new IllegalArgumentException( "The Uri: '" + uri.toString() + "' is not recognised" );
+		}
 	}
 }

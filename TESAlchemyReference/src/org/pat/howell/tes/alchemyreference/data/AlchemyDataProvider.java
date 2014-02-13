@@ -1,21 +1,17 @@
 package org.pat.howell.tes.alchemyreference.data;
 
+import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 
 /**
  * Content provider for the alchemy database in the application
  * Used to control access to the database.
  */
 public class AlchemyDataProvider extends ContentProvider {
-
-	@Override
-	public int delete(Uri arg0, String arg1, String[] arg2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public String getType(Uri arg0) {
@@ -49,7 +45,7 @@ public class AlchemyDataProvider extends ContentProvider {
 	}
 	
 	@Override
-	public void shutdown() {
-		super.shutdown();
+	public int delete(Uri arg0, String arg1, String[] arg2) {
+		throw new UnsupportedOperationException( "Delete is not supported on this database" );
 	}
 }

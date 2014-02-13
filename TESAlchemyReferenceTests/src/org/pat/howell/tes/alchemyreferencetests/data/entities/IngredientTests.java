@@ -1,16 +1,13 @@
 package org.pat.howell.tes.alchemyreferencetests.data.entities;
 
 import java.util.ArrayList;
-
+import org.junit.Test;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
-
 import android.os.Parcel;
-
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class IngredientTests extends TestCase {
-
+	
 	public void testIngredientEquality() {
 		Ingredient testIngredient1 = createTestIngredient();
 		Ingredient testIngredient2 = createTestIngredient();
