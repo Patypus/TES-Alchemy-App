@@ -59,6 +59,16 @@
                   android:process=":dataProcess"
                   android:exported="false" />
         <!-- End of content provider listing -->
+        
+        <!-- Start of Service listing -->
+        <service android:name="org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService"
+           		android:exported="false"
+           		 >
+          <intent-filter >
+              <action android:name="tes.alchemyreference.DATABASELOADING"/>
+          </intent-filter>
+       </service>
+        <!-- End of Service listing -->
     </application>
 
 </manifest>
