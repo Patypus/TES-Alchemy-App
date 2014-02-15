@@ -13,6 +13,14 @@ import android.os.Build;
  */
 public class AlchemyDataProvider extends ContentProvider {
 
+	private UriManager _uriManager;
+	
+	@Override
+	public boolean onCreate() {
+		_uriManager = new UriManager();
+		return false;
+	}
+	
 	@Override
 	public String getType(Uri arg0) {
 		// TODO Auto-generated method stub
@@ -20,28 +28,19 @@ public class AlchemyDataProvider extends ContentProvider {
 	}
 
 	@Override
+	public Cursor query( Uri uri, String[] columnNames, String where, String[] values, String sort ) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public Uri insert(Uri arg0, ContentValues arg1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean onCreate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Cursor query(Uri arg0, String[] arg1, String arg2, String[] arg3,
-			String arg4) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException( "Insert is not supported on this database" );
 	}
 
 	@Override
 	public int update(Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException( "Update is not supported on this database" );
 	}
 	
 	@Override

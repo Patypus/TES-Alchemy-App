@@ -18,12 +18,35 @@ public class AlchemyDataProviderTest extends ProviderTestCase2<AlchemyDataProvid
 		instance = new AlchemyDataProvider();
 	}
 	
-	
 	public void testCallToDeleteThrowsUnsupportedOperationExcption() {
 		UnsupportedOperationException expecetedException = null;
 		try {
 			instance.delete( ContentConstants.INGREDIENT_URI,
 							 "Where",
+							 null );
+		} catch ( UnsupportedOperationException exception ) {
+			expecetedException = exception;
+		}
+		assertNotNull( expecetedException );
+	}
+	
+	public void testCallToInsertThrowsUnsupportedOperationException() {
+		UnsupportedOperationException expecetedException = null;
+		try {
+			instance.insert( ContentConstants.INGREDIENT_URI,
+							 null );
+		} catch ( UnsupportedOperationException exception ) {
+			expecetedException = exception;
+		}
+		assertNotNull( expecetedException );
+	}
+	
+	public void testCallToUpdateThrowsUnsupportedOperationException() {
+		UnsupportedOperationException expecetedException = null;
+		try {
+			instance.update( ContentConstants.INGREDIENT_URI,
+							 null,
+							 null,
 							 null );
 		} catch ( UnsupportedOperationException exception ) {
 			expecetedException = exception;
