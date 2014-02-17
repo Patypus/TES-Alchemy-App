@@ -6,10 +6,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.pat.howell.tes.alchemyreference.R;
 import org.pat.howell.tes.alchemyreference.data.AlchemyDatabaseOpenHelper;
+import org.pat.howell.tes.alchemyreference.data.DatabaseConstants;
 
 import android.app.Activity;
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -25,9 +28,7 @@ public class DatabaseLoadingService extends IntentService {
 	/** This key should be used in Intents to this Service to identify the 
 	 * extra containing the messenger to report a result back to */
 	public static final String MESSENGER_EXTRA = "MESSENGER";
-	/** Name of the database file */
-	public static final String DATABASE_NAME = "alchemyDatabase";
-	public static final int DATABASE_VERSION = 1;
+	
 	private String DatabaseFileLocation;
 	
 	public DatabaseLoadingService() {
@@ -36,7 +37,7 @@ public class DatabaseLoadingService extends IntentService {
 
 	@Override
 	protected void onHandleIntent( Intent intent ) {
-		DatabaseFileLocation = "/data/data/" + getPackageName() + "/databases/";
+		DatabaseFileLocation = getApplicationContext().getFilesDir().getPath() + "data/" + getPackageName() + "/databases/";
 		Messenger messenger = getReturnMessengerFromIntent( intent.getExtras() );
 		int result = Activity.RESULT_OK;
 		if( checkFileHasNotYetBeenCopied() ) {
@@ -47,7 +48,7 @@ public class DatabaseLoadingService extends IntentService {
 	}
 
 	private boolean checkFileHasNotYetBeenCopied() {
-		File databaseFile = new File( DatabaseFileLocation + DATABASE_NAME );
+		File databaseFile = new File( DatabaseFileLocation + DatabaseConstants.DATABASE_NAME );
 		return !databaseFile.exists();
 	}
 	
@@ -56,13 +57,15 @@ public class DatabaseLoadingService extends IntentService {
 	}
 	
 	private void createDatabasesDirectory() {
-		(new AlchemyDatabaseOpenHelper(getApplicationContext(), DATABASE_NAME, DATABASE_VERSION)).createDatabasesDirectory();
+		(new AlchemyDatabaseOpenHelper( getApplicationContext(), 
+										DatabaseConstants.DATABASE_NAME, 
+										DatabaseConstants.DATABASE_VERSION )).createDatabasesDirectory();
 	}
 	
 	private int copyFile() {
 		try {
-			InputStream prebuiltDatabase = getApplicationContext().getAssets().open( DATABASE_NAME );
-			OutputStream destination = new FileOutputStream( DatabaseFileLocation + DATABASE_NAME ); 
+			InputStream prebuiltDatabase = getApplicationContext().getAssets().open( DatabaseConstants.DATABASE_NAME );
+			OutputStream destination = new FileOutputStream( DatabaseFileLocation + DatabaseConstants.DATABASE_NAME ); 
 			byte[] buffer = new byte[1024];
 			int length;
 			while( ( length = prebuiltDatabase.read( buffer ) ) > 0 ) {
@@ -74,7 +77,7 @@ public class DatabaseLoadingService extends IntentService {
 			return Activity.RESULT_OK;
 		} catch ( IOException exception ) {
 			Log.e( this.getClass().getName(), 
-					   "An error occured when copying the database. Error was: " + exception.getMessage() );
+				   getResources().getString( R.string.database_copying_error ) + exception.getMessage() );
 			return Activity.RESULT_CANCELED;
 		}
 	}
@@ -90,7 +93,7 @@ public class DatabaseLoadingService extends IntentService {
 			messenger.send( msg );
 		} catch( RemoteException re ) {
 			Log.e( this.getClass().getName(), 
-				   "An error occured when sending operation complete response. Error was: " + re.getMessage() );
+				   getResources().getString( R.string.message_sedning_error ) + re.getMessage() );
 		}
 	}
 }

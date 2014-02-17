@@ -89,6 +89,10 @@ public final class R {
         /**  Common Activity strings 
          */
         public static final int back_button=0x7f040019;
+        /**  Exception strings 
+         */
+        public static final int database_copying_error=0x7f04001a;
+        public static final int database_create_error=0x7f04001c;
         /**  Ingredient Activity strings 
          */
         public static final int default_title=0x7f040016;
@@ -98,6 +102,7 @@ public final class R {
         /**  Menu Activity strings 
          */
         public static final int menu_title=0x7f04000e;
+        public static final int message_sedning_error=0x7f04001b;
         /**  Effect Search Activity strings 
          */
         public static final int search_by_effect=0x7f040012;

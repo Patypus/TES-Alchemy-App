@@ -1,10 +1,16 @@
 package org.pat.howell.tes.alchemyreference.data;
 
+import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
 
 public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
@@ -14,15 +20,13 @@ public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase arg0) {
-		// TODO Auto-generated method stub
-
+	public void onCreate( SQLiteDatabase arg0 ) {
+		/* Not implemented as the database is pre-created */
 	}
 
 	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
-
+	public void onUpgrade( SQLiteDatabase arg0, int arg1, int arg2 ) {
+		onCreate( arg0 );
 	}
 	
 	/** This method opens and closes the writeable database to ensure that

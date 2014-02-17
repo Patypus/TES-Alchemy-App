@@ -25,4 +25,9 @@
     
     <!-- Common Activity strings -->
     <string name="back_button">Back button</string>
+    
+    <!-- Exception strings -->
+    <string name="database_copying_error">An error occurred when copying the database. Error was: </string>
+    <string name="message_sedning_error">An error occurred when sending operation complete response. Error was: </string>
+    <string name="database_create_error">Error setting up database.</string>
 </resources>

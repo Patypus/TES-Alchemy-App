@@ -1,19 +1,15 @@
 package org.pat.howell.tes.alchemyreference.activities;
 
 import org.pat.howell.tes.alchemyreference.R;
-import org.pat.howell.tes.alchemyreference.R.layout;
-import org.pat.howell.tes.alchemyreference.R.menu;
 import org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
-import android.app.Activity;
-import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 /**

@@ -2,6 +2,7 @@ package org.pat.howell.tes.alchemyreferencetests.data.loading;
 
 import java.io.File;
 
+import org.pat.howell.tes.alchemyreference.data.DatabaseConstants;
 import org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService;
 
 import android.app.Activity;
@@ -28,14 +29,14 @@ public class DatabaseLoadingServiceTests extends ServiceTestCase<DatabaseLoading
 		super.setUp();
 		//Ensure that database directoy is clean before starting tests.
 		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
-				  DatabaseLoadingService.DATABASE_NAME );
+				  			      DatabaseConstants.DATABASE_NAME );
 		database.delete();
 	}
 	
 	protected void tearDown() throws Exception {
 		super.tearDown();
 		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
-				  DatabaseLoadingService.DATABASE_NAME );
+							      DatabaseConstants.DATABASE_NAME );
 		database.delete();
 	}
 
@@ -52,7 +53,7 @@ public class DatabaseLoadingServiceTests extends ServiceTestCase<DatabaseLoading
 			}
 		}
 		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
-								  DatabaseLoadingService.DATABASE_NAME );
+								  DatabaseConstants.DATABASE_NAME );
 		assertTrue( database.exists() );
 	}
 }
