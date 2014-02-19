@@ -29,58 +29,23 @@ public class DatabaseLoadingService extends IntentService {
 	 * extra containing the messenger to report a result back to */
 	public static final String MESSENGER_EXTRA = "MESSENGER";
 	
-	private String DatabaseFileLocation;
-	
 	public DatabaseLoadingService() {
 		super( "DatabaseLoadingService" );
 	}
 
 	@Override
 	protected void onHandleIntent( Intent intent ) {
-		DatabaseFileLocation = getApplicationContext().getFilesDir().getPath() + "data/" + getPackageName() + "/databases/";
 		Messenger messenger = getReturnMessengerFromIntent( intent.getExtras() );
-		int result = Activity.RESULT_OK;
-		if( checkFileHasNotYetBeenCopied() ) {
-			createDatabasesDirectory();
-			result = copyFile();
-		}
+		DatabaseCopier copier = new DatabaseCopier( getApplicationContext() );
+		int result = copier.copyDatabase();
 		sendOperationCompleteRespose( messenger, result );
 	}
 
-	private boolean checkFileHasNotYetBeenCopied() {
-		File databaseFile = new File( DatabaseFileLocation + DatabaseConstants.DATABASE_NAME );
-		return !databaseFile.exists();
-	}
-	
 	private Messenger getReturnMessengerFromIntent( Bundle extras ) {
 		return (Messenger) extras.get( MESSENGER_EXTRA );
 	}
 	
-	private void createDatabasesDirectory() {
-		(new AlchemyDatabaseOpenHelper( getApplicationContext(), 
-										DatabaseConstants.DATABASE_NAME, 
-										DatabaseConstants.DATABASE_VERSION )).createDatabasesDirectory();
-	}
 	
-	private int copyFile() {
-		try {
-			InputStream prebuiltDatabase = getApplicationContext().getAssets().open( DatabaseConstants.DATABASE_NAME );
-			OutputStream destination = new FileOutputStream( DatabaseFileLocation + DatabaseConstants.DATABASE_NAME ); 
-			byte[] buffer = new byte[1024];
-			int length;
-			while( ( length = prebuiltDatabase.read( buffer ) ) > 0 ) {
-				destination.write( buffer, 0, length );
-			}
-			destination.flush();
-			prebuiltDatabase.close();
-			destination.close();
-			return Activity.RESULT_OK;
-		} catch ( IOException exception ) {
-			Log.e( this.getClass().getName(), 
-				   getResources().getString( R.string.database_copying_error ) + exception.getMessage() );
-			return Activity.RESULT_CANCELED;
-		}
-	}
 	
 	private void sendOperationCompleteRespose( Messenger messenger, int result ) {
 		Message message = Message.obtain();

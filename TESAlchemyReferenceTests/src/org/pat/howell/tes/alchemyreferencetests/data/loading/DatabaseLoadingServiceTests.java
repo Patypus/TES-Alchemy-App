@@ -28,16 +28,12 @@ public class DatabaseLoadingServiceTests extends ServiceTestCase<DatabaseLoading
 	protected void setUp() throws Exception {
 		super.setUp();
 		//Ensure that database directoy is clean before starting tests.
-		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
-				  			      DatabaseConstants.DATABASE_NAME );
-		database.delete();
+		removeDatabaseFile();
 	}
 	
 	protected void tearDown() throws Exception {
 		super.tearDown();
-		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
-							      DatabaseConstants.DATABASE_NAME );
-		database.delete();
+		removeDatabaseFile();
 	}
 
 	public void testDatabaseIsCopiedByService() {
@@ -55,5 +51,11 @@ public class DatabaseLoadingServiceTests extends ServiceTestCase<DatabaseLoading
 		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
 								  DatabaseConstants.DATABASE_NAME );
 		assertTrue( database.exists() );
+	}
+	
+	private void removeDatabaseFile() {
+		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
+			      				  DatabaseConstants.DATABASE_NAME );
+		database.delete();
 	}
 }

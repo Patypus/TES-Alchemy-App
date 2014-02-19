@@ -1,8 +1,12 @@
 package org.pat.howell.tes.alchemyreferencetests.activities;
 
+import java.io.File;
+
 import junit.framework.Assert;
 
 import org.pat.howell.tes.alchemyreference.activities.MenuActivity;
+import org.pat.howell.tes.alchemyreference.data.DatabaseConstants;
+
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.widget.Button;
@@ -54,5 +58,24 @@ public class MenuActivityTests extends ActivityUnitTestCase<MenuActivity> {
 		Intent triggeredIntent = getStartedActivityIntent();
 		String actionText = triggeredIntent.getAction(); 
 		Assert.assertEquals("tes.alchemyreference.INGREDIENTSEARCH", actionText);
+	}
+	
+	public void testCreatingMainActivityChecksDatabaseExistence() {
+		removeDatabaseFile();
+		getInstrumentation().callActivityOnCreate( menuActivity, null);
+		try {
+			Thread.sleep( 10000 );
+		} catch( InterruptedException e ) {
+		}
+		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
+				  DatabaseConstants.DATABASE_NAME );
+		assertTrue( database.exists() );
+		removeDatabaseFile();
+	}
+	
+	private void removeDatabaseFile() {
+		File database = new File( "/data/data/org.pat.howell.tes.alchemyreference/databases/" + 
+			      				  DatabaseConstants.DATABASE_NAME );
+		database.delete();
 	}
 }

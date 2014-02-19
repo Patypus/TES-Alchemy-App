@@ -1,6 +1,7 @@
 package org.pat.howell.tes.alchemyreference.data;
 
 import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.data.loading.DatabaseCopier;
 import org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService;
 import android.app.Activity;
 import android.content.Context;
@@ -15,13 +16,17 @@ import android.util.Log;
 
 public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 
+	private Context _applicationContext;
+	
 	public AlchemyDatabaseOpenHelper( Context context, String databaseName, int dbVersion ) {
 		super( context, databaseName, null, dbVersion );
+		_applicationContext = context;
 	}
 
 	@Override
 	public void onCreate( SQLiteDatabase arg0 ) {
-		/* Not implemented as the database is pre-created */
+		DatabaseCopier copier = new DatabaseCopier( _applicationContext );
+		copier.copyDatabase();
 	}
 
 	@Override
