@@ -1,4 +1,4 @@
-package org.pat.howell.tes.alchemyreference.data;
+package org.pat.howell.tes.alchemyreference.data.proxy;
 
 import org.pat.howell.tes.alchemyreference.R;
 import org.pat.howell.tes.alchemyreference.data.loading.DatabaseCopier;
@@ -17,15 +17,17 @@ import android.util.Log;
 public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 
 	private Context _applicationContext;
+	private String _databaseName;
 	
 	public AlchemyDatabaseOpenHelper( Context context, String databaseName, int dbVersion ) {
 		super( context, databaseName, null, dbVersion );
 		_applicationContext = context;
+		_databaseName = databaseName;
 	}
 
 	@Override
 	public void onCreate( SQLiteDatabase arg0 ) {
-		DatabaseCopier copier = new DatabaseCopier( _applicationContext );
+		DatabaseCopier copier = new DatabaseCopier( _applicationContext, _databaseName );
 		copier.copyDatabase();
 	}
 
@@ -49,5 +51,10 @@ public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 			Log.e( getClass().getName(), "Database was not able to be opened" );
 			return null;
 		}
+	}
+	
+	/** Return the name of the database that this class has opened the connection to */
+	public String getDatabaseName() {
+		return _databaseName;
 	}
 }

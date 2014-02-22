@@ -28,12 +28,6 @@ public class UriManager {
 	 * @return - int action key that the Uri corresponds to
 	 */
 	public int match( Uri uri ) {
-		int result = _matcher.match( uri );
-		if ( result != -1 ) {
-			return result;
-		}
-		else {
-			throw new IllegalArgumentException( "The Uri: '" + uri.toString() + "' is not recognised" );
-		}
+		return _matcher.match( uri );
 	}
 }

@@ -27,14 +27,4 @@ public class UriManagerTests extends TestCase {
 		int result = _manager.match( ContentConstants.INGREDIENT_URI );
 		assertEquals( ContentConstants.INGREDIENTS, result );
 	}
-	
-	public void testUnknownUriIsNotResolved() {
-		IllegalArgumentException expectedException = null;
-		try {
-			_manager.match( Uri.parse( "content://" + ContentConstants.PROVIDER_NAME + "/" + "NeedleNardleNoo" ) );
-		} catch (IllegalArgumentException exception) {
-			expectedException = exception;
-		}
-		assertNotNull( expectedException );
-	}
 }

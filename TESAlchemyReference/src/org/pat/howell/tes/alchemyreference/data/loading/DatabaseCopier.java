@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import org.pat.howell.tes.alchemyreference.R;
-import org.pat.howell.tes.alchemyreference.data.AlchemyDatabaseOpenHelper;
 import org.pat.howell.tes.alchemyreference.data.DatabaseConstants;
+import org.pat.howell.tes.alchemyreference.data.proxy.AlchemyDatabaseOpenHelper;
+
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -16,9 +17,11 @@ public class DatabaseCopier {
 
 	private Context _context;
 	private String _databaseFileLocation;
+	private String _databaseName;
 	
-	public DatabaseCopier(Context applicationContext) {
+	public DatabaseCopier( Context applicationContext, String databaseName ) {
 		_context = applicationContext;
+		_databaseName = databaseName;
 	}
 	
 	public int copyDatabase() {
@@ -31,20 +34,14 @@ public class DatabaseCopier {
 	}
 	
 	private boolean checkFileHasNotYetBeenCopied() {
-		File databaseFile = new File( _databaseFileLocation + DatabaseConstants.DATABASE_NAME );
+		File databaseFile = new File( _databaseFileLocation + _databaseName );
 		return !databaseFile.exists();
-	}
-	
-	private void createDatabasesDirectory() {
-		(new AlchemyDatabaseOpenHelper( _context, 
-										DatabaseConstants.DATABASE_NAME, 
-										DatabaseConstants.DATABASE_VERSION )).createDatabasesDirectory();
 	}
 	
 	private int copyFile() {
 		try {
-			InputStream prebuiltDatabase = _context.getAssets().open( DatabaseConstants.DATABASE_NAME );
-			OutputStream destination = new FileOutputStream( _databaseFileLocation + DatabaseConstants.DATABASE_NAME ); 
+			InputStream prebuiltDatabase = _context.getAssets().open( _databaseName );
+			OutputStream destination = new FileOutputStream( _databaseFileLocation + _databaseName ); 
 			byte[] buffer = new byte[1024];
 			int length;
 			while( ( length = prebuiltDatabase.read( buffer ) ) > 0 ) {

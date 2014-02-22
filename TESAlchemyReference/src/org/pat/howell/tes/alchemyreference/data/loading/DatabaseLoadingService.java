@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.pat.howell.tes.alchemyreference.R;
-import org.pat.howell.tes.alchemyreference.data.AlchemyDatabaseOpenHelper;
 import org.pat.howell.tes.alchemyreference.data.DatabaseConstants;
+import org.pat.howell.tes.alchemyreference.data.proxy.AlchemyDatabaseOpenHelper;
 
 import android.app.Activity;
 import android.app.IntentService;
@@ -36,7 +36,7 @@ public class DatabaseLoadingService extends IntentService {
 	@Override
 	protected void onHandleIntent( Intent intent ) {
 		Messenger messenger = getReturnMessengerFromIntent( intent.getExtras() );
-		DatabaseCopier copier = new DatabaseCopier( getApplicationContext() );
+		DatabaseCopier copier = new DatabaseCopier( getApplicationContext(), DatabaseConstants.DATABASE_NAME );
 		int result = copier.copyDatabase();
 		sendOperationCompleteRespose( messenger, result );
 	}
