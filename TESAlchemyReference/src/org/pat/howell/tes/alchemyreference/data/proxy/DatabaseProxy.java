@@ -33,8 +33,14 @@ public class DatabaseProxy {
 				
 	}
 	
-	public Cursor getAllEffects( String[] columnNames, String sort ) {
-		return null;
+	public ArrayList<String> getAllEffects() {
+		SQLiteDatabase database = _database.open();
+		Cursor queryResult = database.query( DatabaseConstants.EFFECTS_TABLE,
+											 new String[] { DatabaseConstants.EFFECT_TITLE_COLUMN },
+											 null, null, null, null, null );
+		ArrayList<String> allEffects = formatEffects( queryResult );
+		database.close();
+		return allEffects;
 	}
 	
 	public Cursor getIngredientsWithEffect( String[] columnNames, String where, String[] values, String sort ) {
@@ -44,7 +50,8 @@ public class DatabaseProxy {
 	private ArrayList<String> formatEffects( Cursor effectsCursor ) {
 		ArrayList<String> effects = new ArrayList<String>();
 		for( effectsCursor.moveToFirst(); !effectsCursor.isAfterLast(); effectsCursor.moveToNext() ) {
-			//TODO - format effects from cursor
+			String effect = effectsCursor.getString( effectsCursor.getColumnIndex( DatabaseConstants.EFFECT_TITLE_COLUMN ) );
+			effects.add( effect );
 		}
 		return effects;
 	}

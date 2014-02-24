@@ -36,13 +36,6 @@ public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 		onCreate( arg0 );
 	}
 	
-	/** This method opens and closes the writeable database to ensure that
-	 * the databases directory in the application is created */
-	public void createDatabasesDirectory() {
-		open();
-		close();
-	}
-	
 	/** Returns the writeable database */
 	public SQLiteDatabase open() {
 		try {

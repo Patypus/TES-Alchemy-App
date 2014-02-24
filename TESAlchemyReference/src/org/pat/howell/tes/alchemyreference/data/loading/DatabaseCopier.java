@@ -25,7 +25,7 @@ public class DatabaseCopier {
 	}
 	
 	public int copyDatabase() {
-		_databaseFileLocation = "/data/data/" + _context.getApplicationContext().getPackageName() + "/databases/";
+		_databaseFileLocation = "/data/data/" + _context.getPackageName() + "/databases/";
 		int result = Activity.RESULT_OK;
 		if( checkFileHasNotYetBeenCopied() ) {
 			result = copyFile();
