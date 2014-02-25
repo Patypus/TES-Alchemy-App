@@ -14,11 +14,17 @@ public class UriManager {
 	{
 		_matcher = new UriMatcher( UriMatcher.NO_MATCH );
 		_matcher.addURI( ContentConstants.PROVIDER_NAME,
-						 ContentConstants.EFFECT_TABLE_KEY,
-						 ContentConstants.EFFECTS );
+						 ContentConstants.ALL_EFFECTS_KEY,
+						 ContentConstants.ALL_EFFECTS );
 		_matcher.addURI( ContentConstants.PROVIDER_NAME,
-					     ContentConstants.INGREDIENT_TABLE_KEY,
-					     ContentConstants.INGREDIENTS );
+					     ContentConstants.ALL_INGREDIENTS_KEY,
+					     ContentConstants.ALL_INGREDIENTS );
+		_matcher.addURI( ContentConstants.PROVIDER_NAME,
+			     		 ContentConstants.INGREDIENT_BY_NAME_KEY,
+			     		 ContentConstants.INGREDIENT_BY_NAME );
+		_matcher.addURI( ContentConstants.PROVIDER_NAME,
+			     	 	 ContentConstants.INGREDIENTS_WITH_EFFECT_KEY,
+			     	 	 ContentConstants.INGREDIENTS_WITH_EFFECT );
 	}
 	
 	/**
