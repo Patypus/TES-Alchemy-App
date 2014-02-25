@@ -43,8 +43,42 @@ public class DatabaseProxy {
 		return allEffects;
 	}
 	
-	public Cursor getIngredientsWithEffect( String[] columnNames, String where, String[] values, String sort ) {
-		return null;
+	public Ingredient getIngredientByName( String name ) {
+		SQLiteDatabase database = _database.open();
+		Cursor queryResult = database.query( DatabaseConstants.INGREDIENTS_TABLE,
+											 new String[] {
+												DatabaseConstants.INGREDIENT_ID_COLUMN,
+												DatabaseConstants.INGREDIENT_NAME_COLUMN,
+												DatabaseConstants.EFFECT_ONE_COLUMN,
+												DatabaseConstants.EFFECT_TWO_COLUMN,
+												DatabaseConstants.EFFECT_THREE_COLUMN,
+												DatabaseConstants.EFFECT_FOUR_COLUMN
+											 },
+											 DatabaseConstants.INGREDIENT_NAME_COLUMN + "=\"" + name + "\"", null, null, null, null );
+		ArrayList<Ingredient> allMatchingIngredients = formatIngredients( queryResult );
+		database.close();
+		return allMatchingIngredients.get( 0 );
+	}
+	
+	public ArrayList<Ingredient> getIngredientsWithEffect( String effectName ) {
+		SQLiteDatabase database = _database.open();
+		Cursor queryResult = database.query( DatabaseConstants.INGREDIENTS_TABLE,
+											 new String[] {
+												DatabaseConstants.INGREDIENT_ID_COLUMN,
+												DatabaseConstants.INGREDIENT_NAME_COLUMN,
+												DatabaseConstants.EFFECT_ONE_COLUMN,
+												DatabaseConstants.EFFECT_TWO_COLUMN,
+												DatabaseConstants.EFFECT_THREE_COLUMN,
+												DatabaseConstants.EFFECT_FOUR_COLUMN
+											 },
+											 DatabaseConstants.EFFECT_ONE_COLUMN + "=\"" + effectName + "\" OR " +
+											 DatabaseConstants.EFFECT_TWO_COLUMN + "=\"" + effectName + "\" OR " +
+											 DatabaseConstants.EFFECT_THREE_COLUMN + "=\"" + effectName + "\" OR " +
+											 DatabaseConstants.EFFECT_FOUR_COLUMN + "=\"" + effectName +"\"",
+											 null, null, null, null );
+		ArrayList<Ingredient> allMatchingIngredients = formatIngredients( queryResult );
+		database.close();
+		return allMatchingIngredients;
 	}
 	
 	private ArrayList<String> formatEffects( Cursor effectsCursor ) {

@@ -78,6 +78,32 @@ public class DatabaseProxyTests extends AndroidTestCase {
 		compareArraysOfEffects( sortedExpectedEffects, returnedEffects );
 	}
 	
+	public void testGetIngredientByName() {
+		ensureDatabaseIsCopied();
+		Ingredient result = proxy.getIngredientByName( "Nirnroot" );
+		assertNotNull( result );
+		assertEquals( "Nirnroot" , result.getName() );
+	}
+	
+	public void testSearchForIngredientEffectsReturnsExpectedIngredients() {
+		ensureDatabaseIsCopied();
+		ArrayList<Ingredient> results = proxy.getIngredientsWithEffect( "Invisibility" );
+		assertEquals( results.size() , 2 );
+		testIngredientsArrayContiansIngredientWithName( "Nirnroot" , results );
+		testIngredientsArrayContiansIngredientWithName( "Vampire Dust" , results );
+	}
+	
+	private boolean testIngredientsArrayContiansIngredientWithName( String name, ArrayList<Ingredient> ingredientArray ) {
+		boolean result = false;
+		for( Ingredient ingredient : ingredientArray ) {
+			if( ingredient.getName().equals( name ) ) {
+				result = true;
+				return result;
+			}
+		}
+		return result;
+	}
+	
 	private ArrayList<String> buildExpectedEffectsArray() {
 		ArrayList<String> expected = 
 					new ArrayList<String>( Arrays.asList( "Resist Magic", 
