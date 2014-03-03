@@ -27,6 +27,7 @@ public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate( SQLiteDatabase arg0 ) {
+		this.getReadableDatabase();
 		DatabaseCopier copier = new DatabaseCopier( _applicationContext, _databaseName );
 		copier.copyDatabase();
 	}

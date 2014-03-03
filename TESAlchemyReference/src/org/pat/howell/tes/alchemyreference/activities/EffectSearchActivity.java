@@ -1,9 +1,18 @@
 package org.pat.howell.tes.alchemyreference.activities;
 
+import java.util.ArrayList;
+
 import org.pat.howell.tes.alchemyreference.R;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
+import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
+import org.pat.howell.tes.alchemyreference.data.ContentConstants;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,19 +24,28 @@ import android.widget.Spinner;
  * for the user to search for
  */
 public class EffectSearchActivity extends Activity {
-
+	/** static instance of this class for use by handlers */
+	private static EffectSearchActivity instance;
 	/** Spinner containing list of available effects */
 	private Spinner effectSpinner;
-	
 	/** Ingredients list to be populated with ingredients matching chosen effect */
 	private ListView ingredientsList;
-	
+	/** Handler for responses loading effects from the database */
+	private static Handler effectResponseHandler = new Handler() {
+		@SuppressWarnings("unchecked")
+		public void handleMessage( Message message  ) {
+			ArrayList<String> response = (ArrayList<String>) message.obj;
+			instance.populateEffectSpinner( (String[]) response.toArray() );
+		}
+	};
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
+        instance = this;
         setContentView( R.layout.effect_search_activity );
         ingredientsList = (ListView) findViewById( R.id.ingredients_with_choosen_effect );
         effectSpinner = (Spinner) findViewById( R.id.effect_choice_spinner );
+        //requestEffectData();
         setDummyData();
         setOnChildClickHandlerForIngredientsList();
     }
@@ -49,7 +67,7 @@ public class EffectSearchActivity extends Activity {
     
     private void setDummyData() {
     	populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
-    	populateEffectSpinner( getResources().getStringArray( R.array.effects_dummy_array ) );
+    	//populateEffectSpinner( getResources().getStringArray( R.array.effects_dummy_array ) );
     }
     
     private void populateIngredientsList( String[] ingredientNames ) {
@@ -67,5 +85,13 @@ public class EffectSearchActivity extends Activity {
     
     private void setOnChildClickHandlerForIngredientsList() {
     	ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this ) );
+    }
+    
+    private void requestEffectData() {
+    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+    	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_EFFECTS_URI.toString() );
+    	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( effectResponseHandler ) );
+    	startService( intent );
+    	
     }
 }
