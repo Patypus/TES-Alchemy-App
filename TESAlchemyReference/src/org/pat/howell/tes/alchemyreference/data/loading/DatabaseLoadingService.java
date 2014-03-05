@@ -36,7 +36,7 @@ public class DatabaseLoadingService extends IntentService {
 	@Override
 	protected void onHandleIntent( Intent intent ) {
 		Messenger messenger = getReturnMessengerFromIntent( intent.getExtras() );
-		DatabaseCopier copier = new DatabaseCopier( getApplicationContext(), DatabaseConstants.DATABASE_NAME );
+		DatabaseCopier copier = new DatabaseCopier( getApplicationContext(), DatabaseConstants.DATABASE_NAME, createOpenHandler() );
 		int result = copier.copyDatabase();
 		sendOperationCompleteRespose( messenger, result );
 	}
@@ -45,7 +45,9 @@ public class DatabaseLoadingService extends IntentService {
 		return (Messenger) extras.get( MESSENGER_EXTRA );
 	}
 	
-	
+	private AlchemyDatabaseOpenHelper createOpenHandler() {
+		return new AlchemyDatabaseOpenHelper( getApplicationContext(), DatabaseConstants.DATABASE_NAME, DatabaseConstants.DATABASE_VERSION );
+	}
 	
 	private void sendOperationCompleteRespose( Messenger messenger, int result ) {
 		Message message = Message.obtain();

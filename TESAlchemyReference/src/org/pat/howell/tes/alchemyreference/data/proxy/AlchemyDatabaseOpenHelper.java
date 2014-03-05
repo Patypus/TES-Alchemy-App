@@ -27,8 +27,7 @@ public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate( SQLiteDatabase arg0 ) {
-		this.getReadableDatabase();
-		DatabaseCopier copier = new DatabaseCopier( _applicationContext, _databaseName );
+		DatabaseCopier copier = new DatabaseCopier( _applicationContext, _databaseName, this );
 		copier.copyDatabase();
 	}
 
@@ -50,5 +49,12 @@ public class AlchemyDatabaseOpenHelper extends SQLiteOpenHelper {
 	/** Return the name of the database that this class has opened the connection to */
 	public String getDatabaseName() {
 		return _databaseName;
+	}
+	
+	/** This method opens and closes the writeable database to ensure that
+	 * the databases directory in the application is created */
+	public void createDatabasesDirectory() {
+		open();
+		close();
 	}
 }

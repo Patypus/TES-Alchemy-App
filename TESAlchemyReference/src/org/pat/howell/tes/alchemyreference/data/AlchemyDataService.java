@@ -35,27 +35,31 @@ public class AlchemyDataService extends IntentService {
 	public AlchemyDataService() {
 		super( AlchemyDataService.class.toString() );
 		_uriManager = new UriManager();
-		AlchemyDatabaseOpenHelper openHandler = new AlchemyDatabaseOpenHelper( getApplicationContext(),
-																			   DatabaseConstants.DATABASE_NAME,
-																			   DatabaseConstants.DATABASE_VERSION );
-		_proxy = new DatabaseProxy( openHandler );
 	}
 	
 	@Override
 	protected void onHandleIntent( Intent intent ) {
+		AlchemyDatabaseOpenHelper openHandler = new AlchemyDatabaseOpenHelper( getApplicationContext(),
+				   DatabaseConstants.DATABASE_NAME,
+				   DatabaseConstants.DATABASE_VERSION );
+		_proxy = new DatabaseProxy( openHandler );
 		Uri operationUri = Uri.parse( intent.getStringExtra( URI_KEY ) );
 		Object returnable = null;
 		switch( _uriManager.match( operationUri ) ) {
 			case ContentConstants.ALL_INGREDIENTS:
 				returnable = loadAllIngredients();
+				break;
 			case ContentConstants.ALL_EFFECTS:
 				returnable = loadAllEffects();
+				break;
 			case ContentConstants.INGREDIENT_BY_NAME:
 				String ingredientName = intent.getStringExtra( INGREDIENT_NAME_KEY );
 				returnable = loadIngredientByName( ingredientName );
+				break;
 			case ContentConstants.INGREDIENTS_WITH_EFFECT:
 				String effectName = intent.getStringExtra( EFFECT_KEY_NAME );
 				returnable = loadAllIngredientsWithEffect( effectName );
+				break;
 		}
 		Messenger messenger = (Messenger) intent.getParcelableExtra( MESSENGER_KEY );
 		replyToCallingActivity( messenger, returnable );

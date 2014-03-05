@@ -16,18 +16,21 @@ import android.util.Log;
 public class DatabaseCopier {
 
 	private Context _context;
+	private AlchemyDatabaseOpenHelper _openHandler; 
 	private String _databaseFileLocation;
 	private String _databaseName;
 	
-	public DatabaseCopier( Context applicationContext, String databaseName ) {
+	public DatabaseCopier( Context applicationContext, String databaseName, AlchemyDatabaseOpenHelper handler ) {
 		_context = applicationContext;
 		_databaseName = databaseName;
+		_openHandler = handler;
 	}
 	
 	public int copyDatabase() {
 		_databaseFileLocation = "/data/data/" + _context.getPackageName() + "/databases/";
 		int result = Activity.RESULT_OK;
 		if( checkFileHasNotYetBeenCopied() ) {
+			_openHandler.createDatabasesDirectory();
 			result = copyFile();
 		}
 		return result;

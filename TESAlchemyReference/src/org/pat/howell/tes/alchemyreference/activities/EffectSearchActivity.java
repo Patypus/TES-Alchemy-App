@@ -35,7 +35,9 @@ public class EffectSearchActivity extends Activity {
 		@SuppressWarnings("unchecked")
 		public void handleMessage( Message message  ) {
 			ArrayList<String> response = (ArrayList<String>) message.obj;
-			instance.populateEffectSpinner( (String[]) response.toArray() );
+			String[] stringEffects = new String[response.size()];
+			stringEffects = response.toArray(stringEffects);
+			instance.populateEffectSpinner( stringEffects );
 		}
 	};
 	@Override
@@ -45,7 +47,7 @@ public class EffectSearchActivity extends Activity {
         setContentView( R.layout.effect_search_activity );
         ingredientsList = (ListView) findViewById( R.id.ingredients_with_choosen_effect );
         effectSpinner = (Spinner) findViewById( R.id.effect_choice_spinner );
-        //requestEffectData();
+        requestEffectData();
         setDummyData();
         setOnChildClickHandlerForIngredientsList();
     }
