@@ -41,6 +41,7 @@ public class IngredientActivity extends Activity {
     }
     
     private void setClickHandlerOnListOfIngredientsMatchingEffect() {
+    	//TODO - set new click handler for new custom adapter
     	matchingIngredients.setOnItemClickListener( new IngredientListItemClickHandler( this ) );
     }
     
