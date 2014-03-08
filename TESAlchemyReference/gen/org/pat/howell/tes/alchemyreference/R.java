@@ -8,10 +8,6 @@
 package org.pat.howell.tes.alchemyreference;
 
 public final class R {
-    public static final class array {
-        public static final int effects_dummy_array=0x7f070000;
-        public static final int ingredients_dummy_data=0x7f070001;
-    }
     public static final class attr {
     }
     public static final class color {
@@ -32,27 +28,27 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0014;
-        public static final int choosen_effect_display=0x7f0a0008;
-        public static final int effect_choice_spinner=0x7f0a0002;
-        public static final int effect_search_back_button=0x7f0a0001;
-        public static final int effects_of_ingredient_list=0x7f0a0006;
-        public static final int ingredient_back_button=0x7f0a0005;
-        public static final int ingredient_list=0x7f0a000d;
-        public static final int ingredient_list_item_name_field=0x7f0a000a;
-        public static final int ingredient_search_back_button=0x7f0a000c;
-        public static final int ingredient_title=0x7f0a0004;
-        public static final int ingredients_with_choosen_effect=0x7f0a0003;
-        public static final int matching_ingredients_label=0x7f0a0007;
-        public static final int matching_ingredients_list=0x7f0a0009;
-        public static final int menu_button_layout=0x7f0a0010;
-        public static final int menu_title=0x7f0a000f;
-        public static final int search_by_effect_button=0x7f0a0012;
-        public static final int search_by_effect_title=0x7f0a0000;
-        public static final int search_for_ingredient_title=0x7f0a000b;
-        public static final int search_ingredient_button=0x7f0a0013;
-        public static final int setch_by_label=0x7f0a0011;
-        public static final int version_title_view=0x7f0a000e;
+        public static final int action_settings=0x7f090014;
+        public static final int choosen_effect_display=0x7f090008;
+        public static final int effect_choice_spinner=0x7f090002;
+        public static final int effect_search_back_button=0x7f090001;
+        public static final int effects_of_ingredient_list=0x7f090006;
+        public static final int ingredient_back_button=0x7f090005;
+        public static final int ingredient_list=0x7f09000d;
+        public static final int ingredient_list_item_name_field=0x7f09000a;
+        public static final int ingredient_search_back_button=0x7f09000c;
+        public static final int ingredient_title=0x7f090004;
+        public static final int ingredients_with_choosen_effect=0x7f090003;
+        public static final int matching_ingredients_label=0x7f090007;
+        public static final int matching_ingredients_list=0x7f090009;
+        public static final int menu_button_layout=0x7f090010;
+        public static final int menu_title=0x7f09000f;
+        public static final int search_by_effect_button=0x7f090012;
+        public static final int search_by_effect_title=0x7f090000;
+        public static final int search_for_ingredient_title=0x7f09000b;
+        public static final int search_ingredient_button=0x7f090013;
+        public static final int setch_by_label=0x7f090011;
+        public static final int version_title_view=0x7f09000e;
     }
     public static final class layout {
         public static final int effect_search_activity=0x7f030000;
@@ -62,7 +58,7 @@ public final class R {
         public static final int menu_activity=0x7f030004;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
         public static final int action_settings=0x7f040002;
@@ -79,6 +75,9 @@ public final class R {
         public static final int default_title=0x7f04000b;
         public static final int effect_button_text=0x7f040005;
         public static final int ingredient_button_text=0x7f040006;
+        /**  Intent keys 
+         */
+        public static final int ingredient_extra_key=0x7f040012;
         public static final int ingredient_matching_effect=0x7f04000c;
         /**  Menu Activity strings 
          */
@@ -120,9 +119,9 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f070001;
     }
 }

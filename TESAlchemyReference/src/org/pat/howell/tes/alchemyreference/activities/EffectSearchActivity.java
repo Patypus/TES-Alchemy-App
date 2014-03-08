@@ -3,9 +3,11 @@ package org.pat.howell.tes.alchemyreference.activities;
 import java.util.ArrayList;
 
 import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.activities.adapters.IngredientListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
 import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
 import org.pat.howell.tes.alchemyreference.data.ContentConstants;
+import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -40,6 +42,7 @@ public class EffectSearchActivity extends Activity {
 			instance.populateEffectSpinner( stringEffects );
 		}
 	};
+	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
@@ -68,8 +71,8 @@ public class EffectSearchActivity extends Activity {
     }
     
     private void setDummyData() {
+    	//TODO - link to db
     	populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
-    	//populateEffectSpinner( getResources().getStringArray( R.array.effects_dummy_array ) );
     }
     
     private void populateIngredientsList( String[] ingredientNames ) {
@@ -86,7 +89,7 @@ public class EffectSearchActivity extends Activity {
 	}
     
     private void setOnChildClickHandlerForIngredientsList() {
-    	ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this ) );
+    	ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this, new IngredientListAdapter(getApplicationContext(), new Ingredient[0]) ) );
     }
     
     private void requestEffectData() {
@@ -94,6 +97,5 @@ public class EffectSearchActivity extends Activity {
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_EFFECTS_URI.toString() );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( effectResponseHandler ) );
     	startService( intent );
-    	
     }
 }

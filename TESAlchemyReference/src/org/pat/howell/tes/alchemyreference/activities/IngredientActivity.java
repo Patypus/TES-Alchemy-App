@@ -1,13 +1,20 @@
 package org.pat.howell.tes.alchemyreference.activities;
 
+import java.util.ArrayList;
 import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.activities.adapters.IngredientListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
-
+import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
+import org.pat.howell.tes.alchemyreference.data.ContentConstants;
+import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
@@ -16,14 +23,25 @@ import android.widget.ListView;
 public class IngredientActivity extends Activity {
 	/** The list of ingredients matching a chosen effect */
 	private ListView matchingIngredients;
+	private static IngredientActivity instance;
+	/** Handler for responses loading ingredients from the database */
+	private static Handler ingredientResponseHandler = new Handler() {
+		@SuppressWarnings("unchecked")
+		public void handleMessage( Message message  ) {
+			ArrayList<Ingredient> response = (ArrayList<Ingredient>) message.obj;
+			Ingredient[] ingredients = new Ingredient[response.size()];
+			ingredients = response.toArray( ingredients );
+			instance.populateIngredients( ingredients );
+		}
+	};
 	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
+		instance = this;
         setContentView( R.layout.ingredient_activity );
         matchingIngredients = (ListView) findViewById( R.id.matching_ingredients_list );
-        loadDummyData();
-        setClickHandlerOnListOfIngredientsMatchingEffect();
+        requestDataFromDatabase();
     }
 
     @Override
@@ -33,16 +51,21 @@ public class IngredientActivity extends Activity {
         return true;
     }
     
-    private void loadDummyData() {
-    	String[] dummyData = getResources().getStringArray( R.array.ingredients_dummy_data );
-    	matchingIngredients.setAdapter( new ArrayAdapter<String>( this, 
-										android.R.layout.simple_list_item_1, 
-										dummyData ) );
+    private void requestDataFromDatabase() {
+    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+    	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_INGREDIENTS_URI.toString() );
+    	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
+    	startService( intent );
     }
     
-    private void setClickHandlerOnListOfIngredientsMatchingEffect() {
-    	//TODO - set new click handler for new custom adapter
-    	matchingIngredients.setOnItemClickListener( new IngredientListItemClickHandler( this ) );
+    private void populateIngredients( Ingredient[] ingredients ) {
+    	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
+    	matchingIngredients.setAdapter( adapter );
+    	setClickHandlerOnListOfIngredientsMatchingEffect(adapter);
+    }
+    
+    private void setClickHandlerOnListOfIngredientsMatchingEffect( IngredientListAdapter adapter ) {
+    	matchingIngredients.setOnItemClickListener( new IngredientListItemClickHandler( this, adapter ) );
     }
     
     /**

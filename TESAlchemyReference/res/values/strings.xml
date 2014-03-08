@@ -30,4 +30,7 @@
     <string name="database_copying_error">An error occurred when copying the database. Error was: </string>
     <string name="message_sedning_error">An error occurred when sending operation complete response. Error was: </string>
     <string name="database_create_error">Error setting up database.</string>
+    
+    <!-- Intent keys -->
+    <string name="ingredient_extra_key">IngredientExtra</string>
 </resources>

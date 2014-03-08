@@ -3,7 +3,9 @@ package org.pat.howell.tes.alchemyreference.activities;
 import java.util.ArrayList;
 
 import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.activities.adapters.IngredientListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
+import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -35,6 +37,7 @@ public class IngredientSearchActivity extends Activity {
 		super.onCreate( savedInstanceState );
         setContentView( R.layout.ingredient_search_activity );
         ingredientsList = (ListView) findViewById( R.id.ingredient_list );
+        //TODO - link to db
         populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
         setOnItemClickHandlerForList();
     }
@@ -63,6 +66,6 @@ public class IngredientSearchActivity extends Activity {
 	
 	private void setOnItemClickHandlerForList()
 	{
-		ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this ) );
+		ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this, new IngredientListAdapter(getApplicationContext(), new Ingredient[0]) ) );
 	}
 }
