@@ -24,16 +24,7 @@ public class IngredientActivity extends Activity {
 	/** The list of ingredients matching a chosen effect */
 	private ListView matchingIngredients;
 	private static IngredientActivity instance;
-	/** Handler for responses loading ingredients from the database */
-	private static Handler ingredientResponseHandler = new Handler() {
-		@SuppressWarnings("unchecked")
-		public void handleMessage( Message message  ) {
-			ArrayList<Ingredient> response = (ArrayList<Ingredient>) message.obj;
-			Ingredient[] ingredients = new Ingredient[response.size()];
-			ingredients = response.toArray( ingredients );
-			instance.populateIngredients( ingredients );
-		}
-	};
+	
 	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -41,7 +32,8 @@ public class IngredientActivity extends Activity {
 		instance = this;
         setContentView( R.layout.ingredient_activity );
         matchingIngredients = (ListView) findViewById( R.id.matching_ingredients_list );
-        requestDataFromDatabase();
+        //TODO - fix
+        //requestDataFromDatabase();
     }
 
     @Override
@@ -51,18 +43,9 @@ public class IngredientActivity extends Activity {
         return true;
     }
     
-    private void requestDataFromDatabase() {
-    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
-    	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_INGREDIENTS_URI.toString() );
-    	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
-    	startService( intent );
-    }
     
-    private void populateIngredients( Ingredient[] ingredients ) {
-    	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
-    	matchingIngredients.setAdapter( adapter );
-    	setClickHandlerOnListOfIngredientsMatchingEffect(adapter);
-    }
+    
+    
     
     private void setClickHandlerOnListOfIngredientsMatchingEffect( IngredientListAdapter adapter ) {
     	matchingIngredients.setOnItemClickListener( new IngredientListItemClickHandler( this, adapter ) );

@@ -72,7 +72,7 @@ public class EffectSearchActivity extends Activity {
     
     private void setDummyData() {
     	//TODO - link to db
-    	populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
+    	//populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
     }
     
     private void populateIngredientsList( String[] ingredientNames ) {
