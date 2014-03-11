@@ -19,9 +19,8 @@ public class IngredientListItemClickHandler implements AdapterView.OnItemClickLi
 	}
 	
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View selectedItem, int arg2, long arg3) {
-		int index = arg0.getSelectedItemPosition();
-		Ingredient selectedIngredient = _adapter.getItem( index );
+	public void onItemClick(AdapterView<?> parent, View selectedItem, int position, long id) {
+		Ingredient selectedIngredient = _adapter.getItem( position );
 		String key = _activityContext.getString( R.string.ingredient_extra_key );
 		Intent intent = new Intent("tes.alchemyreference.EFFECT");
 		intent.putExtra(key, selectedIngredient );
