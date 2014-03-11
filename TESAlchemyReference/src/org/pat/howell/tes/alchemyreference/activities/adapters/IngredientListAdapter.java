@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class IngredientListAdapter extends ArrayAdapter<Ingredient> {
 	/** Array of displayed ingredients */
 	private Ingredient[] _ingredients;
-	/** Inflator for list item views */
+	/** Inflater for list item views */
 	private LayoutInflater _inflator;
 	
 	public IngredientListAdapter( Context context, Ingredient[] ingredients ) {

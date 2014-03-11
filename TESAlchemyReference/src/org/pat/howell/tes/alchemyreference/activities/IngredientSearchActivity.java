@@ -81,15 +81,10 @@ public class IngredientSearchActivity extends Activity {
 	private void populateIngredients( Ingredient[] ingredients ) {
     	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
     	ingredientsList.setAdapter( adapter );
-    	setClickHandlerOnListOfIngredientsMatchingEffect(adapter);
+    	setClickHandlerOnListOfIngredients(adapter);
     }
 	
-	private void setClickHandlerOnListOfIngredientsMatchingEffect( IngredientListAdapter adapter ) {
+	private void setClickHandlerOnListOfIngredients( IngredientListAdapter adapter ) {
 		ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this, adapter ) );
     }
-	
-	private void setOnItemClickHandlerForList()
-	{
-		ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this, new IngredientListAdapter(getApplicationContext(), new Ingredient[0]) ) );
-	}
 }

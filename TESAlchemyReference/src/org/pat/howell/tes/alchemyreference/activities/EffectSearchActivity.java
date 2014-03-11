@@ -51,13 +51,11 @@ public class EffectSearchActivity extends Activity {
         ingredientsList = (ListView) findViewById( R.id.ingredients_with_choosen_effect );
         effectSpinner = (Spinner) findViewById( R.id.effect_choice_spinner );
         requestEffectData();
-        setDummyData();
         setOnChildClickHandlerForIngredientsList();
     }
 
     @Override
     public boolean onCreateOptionsMenu( Menu menu ) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate( R.menu.main, menu );
         return true;
     }
@@ -70,20 +68,10 @@ public class EffectSearchActivity extends Activity {
     	finish();
     }
     
-    private void setDummyData() {
-    	//TODO - link to db
-    	//populateIngredientsList( getResources().getStringArray( R.array.ingredients_dummy_data ) );
-    }
-    
-    private void populateIngredientsList( String[] ingredientNames ) {
-    	ingredientsList.setAdapter( new ArrayAdapter<String>( this, 
-				  					android.R.layout.simple_list_item_1, 
-				  					ingredientNames ) );
-    }
-    
     private void populateEffectSpinner( String[] effects ) {
+    	//android.R.layout.simple_spinner_item
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, 
-																 android.R.layout.simple_spinner_item, 
+																 R.layout.effect_spinner_item, 
 																 effects );
 		effectSpinner.setAdapter( adapter );
 	}
