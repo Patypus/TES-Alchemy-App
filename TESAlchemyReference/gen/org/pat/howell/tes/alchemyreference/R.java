@@ -32,6 +32,7 @@ public final class R {
         public static final int choosen_effect_display=0x7f090009;
         public static final int effect_choice_spinner=0x7f090002;
         public static final int effect_search_back_button=0x7f090001;
+        public static final int effect_text=0x7f090004;
         public static final int effects_of_ingredient_list=0x7f090007;
         public static final int ingredient_back_button=0x7f090006;
         public static final int ingredient_list=0x7f09000e;
@@ -48,7 +49,6 @@ public final class R {
         public static final int search_for_ingredient_title=0x7f09000c;
         public static final int search_ingredient_button=0x7f090014;
         public static final int setch_by_label=0x7f090012;
-        public static final int tv=0x7f090004;
         public static final int version_title_view=0x7f09000f;
     }
     public static final class layout {

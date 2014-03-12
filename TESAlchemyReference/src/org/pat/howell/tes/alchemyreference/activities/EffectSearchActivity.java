@@ -1,25 +1,26 @@
 package org.pat.howell.tes.alchemyreference.activities;
 
 import java.util.ArrayList;
-
 import org.pat.howell.tes.alchemyreference.R;
 import org.pat.howell.tes.alchemyreference.activities.adapters.IngredientListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
 import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
 import org.pat.howell.tes.alchemyreference.data.ContentConstants;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
-
+import android.widget.AdapterView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * Activity containing a list of effects loaded from the database
@@ -42,6 +43,16 @@ public class EffectSearchActivity extends Activity {
 			instance.populateEffectSpinner( stringEffects );
 		}
 	};
+	/** Handler for responses loading ingredients with an effect from the database */
+	private static Handler ingredientResponseHandler = new Handler() {
+		@SuppressWarnings("unchecked")
+		public void handleMessage( Message message ) {
+			ArrayList<Ingredient> response = (ArrayList<Ingredient>) message.obj;
+			Ingredient[] ingredients = new Ingredient[response.size()];
+			ingredients = response.toArray( ingredients );
+			instance.populateIngredientsList( ingredients );
+		}
+	};
 	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -51,7 +62,7 @@ public class EffectSearchActivity extends Activity {
         ingredientsList = (ListView) findViewById( R.id.ingredients_with_choosen_effect );
         effectSpinner = (Spinner) findViewById( R.id.effect_choice_spinner );
         requestEffectData();
-        setOnChildClickHandlerForIngredientsList();
+        setEffectSpinnerOnClickHandler();
     }
 
     @Override
@@ -69,15 +80,17 @@ public class EffectSearchActivity extends Activity {
     }
     
     private void populateEffectSpinner( String[] effects ) {
-    	//android.R.layout.simple_spinner_item
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, 
 																 R.layout.effect_spinner_item, 
 																 effects );
 		effectSpinner.setAdapter( adapter );
 	}
     
-    private void setOnChildClickHandlerForIngredientsList() {
-    	ingredientsList.setOnItemClickListener( new IngredientListItemClickHandler( this, new IngredientListAdapter(getApplicationContext(), new Ingredient[0]) ) );
+    private void setOnChildClickHandlerForIngredientsList( Ingredient[] ingredients ) {
+    	ingredientsList.setOnItemClickListener( 
+    			new IngredientListItemClickHandler( this, 
+    					 						    new IngredientListAdapter( getApplicationContext(), ingredients ) ) 
+    			);
     }
     
     private void requestEffectData() {
@@ -85,5 +98,32 @@ public class EffectSearchActivity extends Activity {
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_EFFECTS_URI.toString() );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( effectResponseHandler ) );
     	startService( intent );
+    }
+    
+    private void setEffectSpinnerOnClickHandler() {
+    	effectSpinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
+    		public void onItemSelected( AdapterView<?> parentView, View selectedItemView, int possition, long id ) {
+    			String selectedEffect = ( (TextView) selectedItemView ).getText().toString();
+    			requestIngredientsWithEffect( selectedEffect );
+    		}
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				Log.w( getClass().getName(), "Nothing selected in spinner");
+			}
+		} );
+    }
+    
+    private void requestIngredientsWithEffect( String effectName ) {
+    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+    	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_INGREDIENTS_WITH_EFFECT_URI.toString() );
+    	intent.putExtra( AlchemyDataService.EFFECT_KEY_NAME, effectName );
+    	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
+    	startService( intent );
+    }
+    
+    private void populateIngredientsList( Ingredient[] ingredients ) {
+    	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
+    	setOnChildClickHandlerForIngredientsList( ingredients );
+    	ingredientsList.setAdapter( adapter );
     }
 }

@@ -1,14 +1,12 @@
 package org.pat.howell.tes.alchemyreference.activities;
 
 import java.util.ArrayList;
-
 import org.pat.howell.tes.alchemyreference.R;
 import org.pat.howell.tes.alchemyreference.activities.adapters.IngredientListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
 import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
 import org.pat.howell.tes.alchemyreference.data.ContentConstants;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,14 +15,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 /**
  * Activity to display all ingredients from the database
