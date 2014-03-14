@@ -15,7 +15,9 @@ import android.os.Message;
 import android.os.Messenger;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Activity for displaying information about a specific ingredient
@@ -23,17 +25,32 @@ import android.widget.ListView;
 public class IngredientActivity extends Activity {
 	/** The list of ingredients matching a chosen effect */
 	private ListView matchingIngredients;
+	/** The list of the ingredient's effects */
+	private ListView ingredientsEffects;
 	private static IngredientActivity instance;
-	
+	/** The ingredient that is being displayed in this activity */
+	private Ingredient displayedIngredient;
+	/** Handler for responses loading ingredients with an effect from the database */
+	private static Handler ingredientResponseHandler = new Handler() {
+		@SuppressWarnings("unchecked")
+		public void handleMessage( Message message ) {
+			ArrayList<Ingredient> response = (ArrayList<Ingredient>) message.obj;
+			Ingredient[] ingredients = new Ingredient[response.size()];
+			ingredients = response.toArray( ingredients );
+			instance.populateMatchingIngredientsList( ingredients );
+		}
+	};
 	
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		instance = this;
+		displayedIngredient = getIntent().getParcelableExtra( getResources().getString( R.string.ingredient_extra_key ) );
         setContentView( R.layout.ingredient_activity );
         matchingIngredients = (ListView) findViewById( R.id.matching_ingredients_list );
-        //TODO - fix
-        //requestDataFromDatabase();
+        ingredientsEffects = (ListView) findViewById( R.id.effects_of_ingredient_list );
+        setComponentsWithActivityDetails();
+        //TODO: set click handler on effects list to set text of choosen_effect_display and to call requestMatchingIngredientsFromDatabase
     }
 
     @Override
@@ -43,11 +60,35 @@ public class IngredientActivity extends Activity {
         return true;
     }
     
+    private void setComponentsWithActivityDetails() {
+    	TextView title = (TextView) findViewById( R.id.ingredient_title );
+    	title.setText( displayedIngredient.getName() );
+    	String[] effects = new String[] 
+    							{ 
+    								displayedIngredient.getEffectOne(),
+    								displayedIngredient.getEffectTwo(),
+    								displayedIngredient.getEffectThree(),
+    								displayedIngredient.getEffectFour()
+								};
+    	
+    	ingredientsEffects.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, effects));
+    }
     
+    private void requestMatchingIngredientsFromDatabase(String effectName) {
+    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+    	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_INGREDIENTS_WITH_EFFECT_URI.toString() );
+    	intent.putExtra( AlchemyDataService.EFFECT_KEY_NAME, effectName );
+    	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
+    	startService( intent );
+    }
     
+    private void populateMatchingIngredientsList( Ingredient[] ingredients ) {
+    	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
+    	setOnChildClickHandlerForIngredientsList( adapter );
+    	matchingIngredients.setAdapter( adapter );
+    }
     
-    
-    private void setClickHandlerOnListOfIngredientsMatchingEffect( IngredientListAdapter adapter ) {
+    private void setOnChildClickHandlerForIngredientsList( IngredientListAdapter adapter ) {
     	matchingIngredients.setOnItemClickListener( new IngredientListItemClickHandler( this, adapter ) );
     }
     
