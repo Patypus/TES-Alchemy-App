@@ -2,6 +2,7 @@ package org.pat.howell.tes.alchemyreference.activities;
 
 import java.util.ArrayList;
 import org.pat.howell.tes.alchemyreference.R;
+import org.pat.howell.tes.alchemyreference.activities.adapters.EffectListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.adapters.IngredientListAdapter;
 import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItemClickHandler;
 import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
@@ -75,7 +76,7 @@ public class IngredientActivity extends Activity {
     								displayedIngredient.getEffectThree(),
     								displayedIngredient.getEffectFour()
 								};
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, effects );
+    	ArrayAdapter<String> adapter = new EffectListAdapter( this, effects );
     	ingredientsEffects.setAdapter( adapter );
     	setEffectsListClickHandler( adapter );
     	dismissProgress();

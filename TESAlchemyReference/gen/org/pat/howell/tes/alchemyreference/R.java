@@ -28,36 +28,38 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
-        public static final int choosen_effect_display=0x7f090009;
-        public static final int effect_choice_spinner=0x7f090002;
-        public static final int effect_search_back_button=0x7f090001;
-        public static final int effect_text=0x7f090004;
-        public static final int effects_of_ingredient_list=0x7f090007;
-        public static final int ingredient_back_button=0x7f090006;
-        public static final int ingredient_list=0x7f09000e;
-        public static final int ingredient_list_item_name_field=0x7f09000b;
-        public static final int ingredient_search_back_button=0x7f09000d;
-        public static final int ingredient_title=0x7f090005;
-        public static final int ingredients_with_choosen_effect=0x7f090003;
-        public static final int matching_ingredients_label=0x7f090008;
-        public static final int matching_ingredients_list=0x7f09000a;
-        public static final int menu_button_layout=0x7f090011;
-        public static final int menu_title=0x7f090010;
-        public static final int search_by_effect_button=0x7f090013;
-        public static final int search_by_effect_title=0x7f090000;
-        public static final int search_for_ingredient_title=0x7f09000c;
-        public static final int search_ingredient_button=0x7f090014;
-        public static final int setch_by_label=0x7f090012;
-        public static final int version_title_view=0x7f09000f;
+        public static final int action_settings=0x7f090016;
+        public static final int choosen_effect_display=0x7f09000a;
+        public static final int effect_choice_spinner=0x7f090003;
+        public static final int effect_list_item_name_field=0x7f090000;
+        public static final int effect_search_back_button=0x7f090002;
+        public static final int effect_text=0x7f090005;
+        public static final int effects_of_ingredient_list=0x7f090008;
+        public static final int ingredient_back_button=0x7f090007;
+        public static final int ingredient_list=0x7f09000f;
+        public static final int ingredient_list_item_name_field=0x7f09000c;
+        public static final int ingredient_search_back_button=0x7f09000e;
+        public static final int ingredient_title=0x7f090006;
+        public static final int ingredients_with_choosen_effect=0x7f090004;
+        public static final int matching_ingredients_label=0x7f090009;
+        public static final int matching_ingredients_list=0x7f09000b;
+        public static final int menu_button_layout=0x7f090012;
+        public static final int menu_title=0x7f090011;
+        public static final int search_by_effect_button=0x7f090014;
+        public static final int search_by_effect_title=0x7f090001;
+        public static final int search_for_ingredient_title=0x7f09000d;
+        public static final int search_ingredient_button=0x7f090015;
+        public static final int setch_by_label=0x7f090013;
+        public static final int version_title_view=0x7f090010;
     }
     public static final class layout {
-        public static final int effect_search_activity=0x7f030000;
-        public static final int effect_spinner_item=0x7f030001;
-        public static final int ingredient_activity=0x7f030002;
-        public static final int ingredient_list_item=0x7f030003;
-        public static final int ingredient_search_activity=0x7f030004;
-        public static final int menu_activity=0x7f030005;
+        public static final int effect_list_item=0x7f030000;
+        public static final int effect_search_activity=0x7f030001;
+        public static final int effect_spinner_item=0x7f030002;
+        public static final int ingredient_activity=0x7f030003;
+        public static final int ingredient_list_item=0x7f030004;
+        public static final int ingredient_search_activity=0x7f030005;
+        public static final int menu_activity=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;
