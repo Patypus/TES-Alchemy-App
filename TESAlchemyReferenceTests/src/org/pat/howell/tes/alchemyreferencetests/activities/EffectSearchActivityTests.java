@@ -39,14 +39,4 @@ public class EffectSearchActivityTests extends ActivityUnitTestCase<EffectSearch
 		backButton.performClick();
 		assertTrue(isFinishCalled());
 	}
-	
-	public void testClickOnIngredientItemDispatchesRequiredEvent() {
-		getInstrumentation().callActivityOnCreate( effectSearchActivity, null );
-		ListView ingredientList = (ListView) effectSearchActivity.findViewById( R.id.ingredients_with_choosen_effect );	
-		ListAdapter adapter = ingredientList.getAdapter();
-		View firstItem = adapter.getView( 0, null, null );
-		ingredientList.performItemClick( firstItem, 0, adapter.getItemId(0) );
-		Intent dispatedIntent = getStartedActivityIntent();
-		Assert.assertEquals( "tes.alchemyreference.EFFECT", dispatedIntent.getAction() );
-	}
 }

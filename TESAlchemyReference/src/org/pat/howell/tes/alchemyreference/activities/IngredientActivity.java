@@ -15,6 +15,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ public class IngredientActivity extends Activity {
 	private ListView matchingIngredients;
 	/** The list of the ingredient's effects */
 	private ListView ingredientsEffects;
+	/** The TextView for displaying the selected effect */
+	private TextView selectedEffectDisplay;
 	private static IngredientActivity instance;
 	/** The ingredient that is being displayed in this activity */
 	private Ingredient displayedIngredient;
@@ -49,8 +52,8 @@ public class IngredientActivity extends Activity {
         setContentView( R.layout.ingredient_activity );
         matchingIngredients = (ListView) findViewById( R.id.matching_ingredients_list );
         ingredientsEffects = (ListView) findViewById( R.id.effects_of_ingredient_list );
+        selectedEffectDisplay = (TextView) findViewById( R.id.choosen_effect_display );
         setComponentsWithActivityDetails();
-        //TODO: set click handler on effects list to set text of choosen_effect_display and to call requestMatchingIngredientsFromDatabase
     }
 
     @Override
@@ -70,8 +73,20 @@ public class IngredientActivity extends Activity {
     								displayedIngredient.getEffectThree(),
     								displayedIngredient.getEffectFour()
 								};
-    	
-    	ingredientsEffects.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, effects));
+    	ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, effects );
+    	ingredientsEffects.setAdapter( adapter );
+    	setEffectsListClickHandler( adapter );
+    }
+    
+    private void setEffectsListClickHandler( final ArrayAdapter<String> effects ) {
+    	ingredientsEffects.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick( AdapterView<?> parent, View slectedItem, int position, long id ) {
+				String selectedEffect = effects.getItem( position );
+				selectedEffectDisplay.setText( selectedEffect );
+				requestMatchingIngredientsFromDatabase( selectedEffect );
+			}
+    	});
     }
     
     private void requestMatchingIngredientsFromDatabase(String effectName) {
