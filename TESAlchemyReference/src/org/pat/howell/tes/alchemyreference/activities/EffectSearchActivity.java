@@ -9,6 +9,7 @@ import org.pat.howell.tes.alchemyreference.data.ContentConstants;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
 import android.widget.AdapterView;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,8 @@ public class EffectSearchActivity extends Activity {
 	private Spinner effectSpinner;
 	/** Ingredients list to be populated with ingredients matching chosen effect */
 	private ListView ingredientsList;
+	/** Progress dialogue to cover the loading of monitors */
+	private ProgressDialog progress;
 	/** Handler for responses loading effects from the database */
 	private static Handler effectResponseHandler = new Handler() {
 		@SuppressWarnings("unchecked")
@@ -83,6 +86,7 @@ public class EffectSearchActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, 
 																 R.layout.effect_spinner_item, 
 																 effects );
+		dismissProgress();
 		effectSpinner.setAdapter( adapter );
 	}
     
@@ -97,6 +101,7 @@ public class EffectSearchActivity extends Activity {
     	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_EFFECTS_URI.toString() );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( effectResponseHandler ) );
+    	showProgress();
     	startService( intent );
     }
     
@@ -118,6 +123,7 @@ public class EffectSearchActivity extends Activity {
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_INGREDIENTS_WITH_EFFECT_URI.toString() );
     	intent.putExtra( AlchemyDataService.EFFECT_KEY_NAME, effectName );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
+    	showProgress();
     	startService( intent );
     }
     
@@ -125,5 +131,20 @@ public class EffectSearchActivity extends Activity {
     	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
     	setOnChildClickHandlerForIngredientsList( ingredients );
     	ingredientsList.setAdapter( adapter );
+    	dismissProgress();
+    }
+    
+    /** Show a progress dialogue to tell the user that the monitors are being loaded */
+    private void showProgress() {
+    	String title = getResources().getString( R.string.loading_title );
+    	String message = getResources().getString( R.string.loading_message );
+    	progress = ProgressDialog.show( EffectSearchActivity.this, title, message, true );
+    }
+    
+    /** Remove the loading monitors progress dialogue */
+    private void dismissProgress() {
+    	if( progress != null ) {
+    		progress.dismiss();
+    	}
     }
 }

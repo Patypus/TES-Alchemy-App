@@ -8,6 +8,7 @@ import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
 import org.pat.howell.tes.alchemyreference.data.ContentConstants;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,8 @@ public class IngredientActivity extends Activity {
 	private static IngredientActivity instance;
 	/** The ingredient that is being displayed in this activity */
 	private Ingredient displayedIngredient;
+	/** Progress dialogue to cover the loading of monitors */
+	private ProgressDialog progress;
 	/** Handler for responses loading ingredients with an effect from the database */
 	private static Handler ingredientResponseHandler = new Handler() {
 		@SuppressWarnings("unchecked")
@@ -58,7 +61,6 @@ public class IngredientActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu( Menu menu ) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate( R.menu.main, menu );
         return true;
     }
@@ -76,6 +78,7 @@ public class IngredientActivity extends Activity {
     	ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, effects );
     	ingredientsEffects.setAdapter( adapter );
     	setEffectsListClickHandler( adapter );
+    	dismissProgress();
     }
     
     private void setEffectsListClickHandler( final ArrayAdapter<String> effects ) {
@@ -94,6 +97,7 @@ public class IngredientActivity extends Activity {
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_INGREDIENTS_WITH_EFFECT_URI.toString() );
     	intent.putExtra( AlchemyDataService.EFFECT_KEY_NAME, effectName );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
+    	showProgress();
     	startService( intent );
     }
     
@@ -101,10 +105,25 @@ public class IngredientActivity extends Activity {
     	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
     	setOnChildClickHandlerForIngredientsList( adapter );
     	matchingIngredients.setAdapter( adapter );
+    	dismissProgress();
     }
     
     private void setOnChildClickHandlerForIngredientsList( IngredientListAdapter adapter ) {
     	matchingIngredients.setOnItemClickListener( new IngredientListItemClickHandler( this, adapter ) );
+    }
+    
+    /** Show a progress dialogue to tell the user that the monitors are being loaded */
+    private void showProgress() {
+    	String title = getResources().getString( R.string.loading_title );
+    	String message = getResources().getString( R.string.loading_message );
+    	progress = ProgressDialog.show( IngredientActivity.this, title, message, true );
+    }
+    
+    /** Remove the loading monitors progress dialogue */
+    private void dismissProgress() {
+    	if( progress != null ) {
+    		progress.dismiss();
+    	}
     }
     
     /**

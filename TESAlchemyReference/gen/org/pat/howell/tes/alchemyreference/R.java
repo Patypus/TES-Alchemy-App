@@ -79,8 +79,12 @@ public final class R {
         public static final int ingredient_button_text=0x7f040006;
         /**  Intent keys 
          */
-        public static final int ingredient_extra_key=0x7f040012;
+        public static final int ingredient_extra_key=0x7f040014;
         public static final int ingredient_matching_effect=0x7f04000c;
+        public static final int loading_message=0x7f040013;
+        /**  Progress dialogue strings 
+         */
+        public static final int loading_title=0x7f040012;
         /**  Menu Activity strings 
          */
         public static final int menu_title=0x7f040003;

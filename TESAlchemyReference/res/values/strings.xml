@@ -31,6 +31,10 @@
     <string name="message_sedning_error">An error occurred when sending operation complete response. Error was: </string>
     <string name="database_create_error">Error setting up database.</string>
     
+    <!-- Progress dialogue strings -->
+    <string name="loading_title">Loading</string>
+    <string name="loading_message">Please wait...</string>
+    
     <!-- Intent keys -->
     <string name="ingredient_extra_key">IngredientExtra</string>
 </resources>
