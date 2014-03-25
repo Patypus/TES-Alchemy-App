@@ -11,7 +11,8 @@
         android:layout_width="fill_parent"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/text_colour"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1.5dp"
+        android:layout_marginBottom="1.5dp"
         />
 
 </LinearLayout>
