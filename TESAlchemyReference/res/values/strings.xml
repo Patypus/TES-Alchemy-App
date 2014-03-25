@@ -17,6 +17,7 @@
     <!-- Ingredient Search Activity strings -->
     <string name="search_for_ingredient">Search for Ingredient</string>
     <string name="search_for_ingredient_title">Ingredient</string>
+    <string name="all_ingredients_label">All ingredients:</string>
     
     <!-- Ingredient Activity strings -->
     <string name="default_title">Not set</string>
@@ -33,7 +34,7 @@
     
     <!-- Progress dialogue strings -->
     <string name="loading_title">Loading</string>
-    <string name="loading_message">Please wait...</string>
+    <string name="loading_message">Please wait…</string>
     
     <!-- Intent keys -->
     <string name="ingredient_extra_key">IngredientExtra</string>
