@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity" >
+    tools:context=".MenuActivity"
+    android:background="@color/background_colour" >
 
     <TextView
         android:id="@+id/version_title_view"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="10dp"
+            android:textColor="@color/text_colour"
             android:text="@string/search_by_label_text"
             android:textSize="15sp" />
 
@@ -55,6 +57,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:onClick="onEffectClicked"
+            android:textColor="@color/text_colour"
             android:text="@string/effect_button_text" />
 
         <Button
@@ -64,6 +67,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:onClick="onIngredientClicked"
+            android:textColor="@color/text_colour"
             android:text="@string/ingredient_button_text" />
     </LinearLayout>
     

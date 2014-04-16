@@ -13,6 +13,7 @@
     <!-- Effect Search Activity strings -->
     <string name="search_by_effect">Search by Effect</string>
     <string name="search_by_effect_title">Effect</string>
+    <string name="matching_ingredients_label">Ingredients with effect:</string>
 
     <!-- Ingredient Search Activity strings -->
     <string name="search_for_ingredient">Search for Ingredient</string>

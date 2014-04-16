@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Menu Activity brandable strings -->
-    <string name="version_title">TES</string> 
+    <string name="version_title">Skyrim</string> 
     
-    <color name="text_colour">#000000</color>
+    <color name="text_colour">#FFFFFF</color>
+    <color name="background_colour">#000000</color>
+    <color name="spinner_item_colour">#3A3A33</color>
 </resources>
