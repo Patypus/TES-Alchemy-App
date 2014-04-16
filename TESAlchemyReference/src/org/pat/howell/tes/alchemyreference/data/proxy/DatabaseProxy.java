@@ -26,7 +26,7 @@ public class DatabaseProxy {
 												DatabaseConstants.EFFECT_THREE_COLUMN,
 												DatabaseConstants.EFFECT_FOUR_COLUMN
 											 },
-											 null, null, null, null, null );
+											 null, null, null, null, DatabaseConstants.INGREDIENT_NAME_COLUMN + " ASC" );
 		ArrayList<Ingredient> allIngredients = formatIngredients( queryResult );
 		database.close();
 		return allIngredients;
@@ -37,7 +37,7 @@ public class DatabaseProxy {
 		SQLiteDatabase database = _database.open();
 		Cursor queryResult = database.query( DatabaseConstants.EFFECTS_TABLE,
 											 new String[] { DatabaseConstants.EFFECT_TITLE_COLUMN },
-											 null, null, null, null, null );
+											 null, null, null, null, DatabaseConstants.EFFECT_TITLE_COLUMN + " ASC" );
 		ArrayList<String> allEffects = formatEffects( queryResult );
 		database.close();
 		return allEffects;
@@ -75,7 +75,7 @@ public class DatabaseProxy {
 											 DatabaseConstants.EFFECT_TWO_COLUMN + "=\"" + effectName + "\" OR " +
 											 DatabaseConstants.EFFECT_THREE_COLUMN + "=\"" + effectName + "\" OR " +
 											 DatabaseConstants.EFFECT_FOUR_COLUMN + "=\"" + effectName +"\"",
-											 null, null, null, null );
+											 null, null, null, DatabaseConstants.INGREDIENT_NAME_COLUMN + " ASC" );
 		ArrayList<Ingredient> allMatchingIngredients = formatIngredients( queryResult );
 		database.close();
 		return allMatchingIngredients;
