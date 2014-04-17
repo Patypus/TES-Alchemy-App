@@ -6,4 +6,5 @@
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:textColor="@color/text_colour"
     android:background="@color/spinner_item_colour"
+    android:paddingLeft="5dp"
      />

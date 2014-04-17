@@ -9,6 +9,7 @@ import org.pat.howell.tes.alchemyreference.data.ContentConstants;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
 import android.widget.AdapterView;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -138,7 +139,10 @@ public class EffectSearchActivity extends Activity {
     private void showProgress() {
     	String title = getResources().getString( R.string.loading_title );
     	String message = getResources().getString( R.string.loading_message );
-    	progress = ProgressDialog.show( EffectSearchActivity.this, title, message, true );
+    	progress = new ProgressDialog( this, AlertDialog.THEME_HOLO_DARK );
+    	progress.setTitle( title );
+    	progress.setMessage( message );
+    	progress.show();
     }
     
     /** Remove the loading monitors progress dialogue */

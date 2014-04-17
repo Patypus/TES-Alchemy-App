@@ -12,6 +12,8 @@ public final class R {
     }
     public static final class color {
         public static final int background_colour=0x7f050001;
+        public static final int list_item_colour=0x7f050003;
+        public static final int list_item_separater=0x7f050004;
         public static final int spinner_item_colour=0x7f050002;
         public static final int text_colour=0x7f050000;
     }
@@ -29,6 +31,7 @@ public final class R {
         public static final int ic_button_back=0x7f020000;
         public static final int ic_button_backold=0x7f020001;
         public static final int ic_launcher=0x7f020002;
+        public static final int newback=0x7f020003;
     }
     public static final class id {
         public static final int action_settings=0x7f090017;

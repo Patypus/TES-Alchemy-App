@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@color/background_colour" >
+    android:background="@color/spinner_item_colour" >
     
     <TextView
         android:id="@+id/ingredient_list_item_name_field"
@@ -14,6 +14,7 @@
         android:textColor="@color/text_colour"
         android:layout_marginTop="1.5dp"
         android:layout_marginBottom="1.5dp"
+        android:layout_marginLeft="4dp"
         />
 
 </LinearLayout>

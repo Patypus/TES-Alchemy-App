@@ -6,4 +6,6 @@
     <color name="text_colour">#FFFFFF</color>
     <color name="background_colour">#000000</color>
     <color name="spinner_item_colour">#3A3A33</color>
+    <color name="list_item_colour">#3A3A33</color>
+    <color name="list_item_separater">#FFFFFF</color>
 </resources>
