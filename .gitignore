@@ -1,2 +1,7 @@
 .metadata
-TESAlchemyReference/bin/*
+Eclipse-Project-OLD/TESAlchemyReference/bin/*
+Studio-Project-NEW/TESAlchemyReference/app/build/*
+Studio-Project-NEW/TESAlchemyReference/.gradle/*
+Studio-Project-NEW/TESAlchemyReference/.idea/*
+Studio-Project-NEW/TESAlchemyReference/build/*
+Studio-Project-NEW/TESAlchemyReference/generated/*

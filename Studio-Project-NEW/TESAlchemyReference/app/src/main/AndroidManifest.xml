@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.pat.howell.tes.alchemyreference"
+    android:versionCode="2"
+    android:versionName="2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="24" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <!-- Start of activity listing -->
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.MenuActivity"
+            android:label="@string/app_name"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.EffectSearchActivity"
+            android:label="@string/search_by_effect"
+            >
+            <intent-filter >
+                <action android:name="tes.alchemyreference.EFFECTSEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>    
+        </activity>
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.IngredientSearchActivity"
+            android:label="@string/search_for_ingredient"
+            >
+            <intent-filter >
+                <action android:name="tes.alchemyreference.INGREDIENTSEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>    
+        </activity>
+        <activity
+            android:name="org.pat.howell.tes.alchemyreference.activities.IngredientActivity"
+            android:label="@string/search_for_ingredient"
+            >
+            <intent-filter >
+                <action android:name="tes.alchemyreference.EFFECT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>    
+        </activity>
+        <!-- End of activity listing -->
+        
+        <!-- Start of Service listing -->
+        <service android:name="org.pat.howell.tes.alchemyreference.data.AlchemyDataService"
+           		android:exported="false"
+           		 >
+          <intent-filter >
+              <action android:name="tes.alchemyreference.DATABASESERVICE"/>
+          </intent-filter>
+       </service>
+       
+        <service android:name="org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService"
+           		android:exported="false"
+           		 >
+          <intent-filter >
+              <action android:name="tes.alchemyreference.DATABASELOADING"/>
+          </intent-filter>
+       </service>
+        <!-- End of Service listing -->
+    </application>
+
+</manifest>

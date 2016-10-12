@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_colour" >
+    
+    <TextView
+        android:id="@+id/ingredient_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/default_title"
+        android:textSize="25sp"
+        android:textColor="@color/text_colour"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" 
+        />
+	
+	<ImageView 
+        android:id="@+id/ingredient_back_button"
+        android:layout_alignBottom="@id/ingredient_title"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignTop="@id/ingredient_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_button_back"
+        android:contentDescription="@string/back_button"
+        android:layout_marginRight="10dp"
+        android:onClick="onBackClicked"
+        />
+	
+	<ListView
+	    android:id="@+id/effects_of_ingredient_list"
+	    android:layout_below="@id/ingredient_title"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginTop="20dp"
+	    android:layout_marginBottom="10dp"
+	    />
+	
+	<TextView 
+	    android:id="@+id/matching_ingredients_label"
+	    android:layout_below="@id/effects_of_ingredient_list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="@color/text_colour"
+	    android:textSize="22sp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginTop="10dp"
+	    android:text="@string/ingredient_matching_effect"
+	    />
+	<TextView 
+	    android:id="@+id/choosen_effect_display"
+	    android:layout_below="@id/matching_ingredients_label"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="@color/text_colour"
+	    android:textSize="18sp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginTop="8dp"
+	    android:text="@string/select_effect_prompt"
+	    />
+	
+	<ListView 
+	    android:id="@+id/matching_ingredients_list"
+	    android:layout_below="@id/choosen_effect_display"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="10dp"
+	    />
+
+</RelativeLayout>

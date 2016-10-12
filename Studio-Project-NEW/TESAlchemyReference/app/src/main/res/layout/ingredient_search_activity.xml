@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_colour" >
+    
+	<TextView
+        android:id="@+id/search_for_ingredient_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_for_ingredient"
+        android:textSize="25sp"
+        android:textColor="@color/text_colour"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" 
+        />
+	
+	<ImageView 
+        android:id="@+id/ingredient_search_back_button"
+        android:layout_alignBottom="@id/search_for_ingredient_title"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignTop="@id/search_for_ingredient_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_button_back"
+        android:contentDescription="@string/back_button"
+        android:layout_marginRight="10dp"
+        android:onClick="onBackClicked"
+        />
+	
+	<TextView
+        android:id="@+id/all_ingredients_label_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all_ingredients_label"
+        android:textSize="18sp"
+        android:textColor="@color/text_colour"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/search_for_ingredient_title" 
+        />
+	
+	<ListView 
+	    android:id="@+id/ingredient_list"
+	    android:layout_below="@id/all_ingredients_label_view"
+	    android:layout_marginTop="14dp"
+	    android:layout_marginBottom="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    />
+    
+    
+</RelativeLayout>
