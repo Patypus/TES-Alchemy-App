@@ -56,17 +56,11 @@
         <service android:name="org.pat.howell.tes.alchemyreference.data.AlchemyDataService"
            		android:exported="false"
            		 >
-          <intent-filter >
-              <action android:name="tes.alchemyreference.DATABASESERVICE"/>
-          </intent-filter>
        </service>
        
         <service android:name="org.pat.howell.tes.alchemyreference.data.loading.DatabaseLoadingService"
            		android:exported="false"
            		 >
-          <intent-filter >
-              <action android:name="tes.alchemyreference.DATABASELOADING"/>
-          </intent-filter>
        </service>
         <!-- End of Service listing -->
     </application>
