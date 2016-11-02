@@ -95,7 +95,7 @@ public class IngredientActivity extends Activity {
     }
     
     private void requestMatchingIngredientsFromDatabase(String effectName) {
-    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+    	Intent intent = new Intent( this, AlchemyDataService.class );
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_INGREDIENTS_WITH_EFFECT_URI.toString() );
     	intent.putExtra( AlchemyDataService.EFFECT_KEY_NAME, effectName );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );

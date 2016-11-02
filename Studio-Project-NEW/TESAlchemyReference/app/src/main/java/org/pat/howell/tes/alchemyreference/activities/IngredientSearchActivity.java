@@ -84,7 +84,7 @@ public class IngredientSearchActivity extends Activity {
     }
 	
 	private void requestDataFromDatabase() {
-    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+    	Intent intent = new Intent( this, AlchemyDataService.class );
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_INGREDIENTS_URI.toString() );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
     	showProgress();

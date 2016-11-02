@@ -57,7 +57,7 @@ public class EffectSearchActivity extends Activity {
 			instance.populateIngredientsList( ingredients );
 		}
 	};
-	
+
 	@Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
@@ -74,7 +74,7 @@ public class EffectSearchActivity extends Activity {
         getMenuInflater().inflate( R.menu.main, menu );
         return true;
     }
-    
+
     /**
      * Click handler for the back button
      * @param view - the clicked button
@@ -82,30 +82,30 @@ public class EffectSearchActivity extends Activity {
     public void onBackClicked( View view ) {
     	finish();
     }
-    
+
     private void populateEffectSpinner( String[] effects ) {
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, 
-																 R.layout.effect_spinner_item, 
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this,
+																 R.layout.effect_spinner_item,
 																 effects );
 		dismissProgress();
 		effectSpinner.setAdapter( adapter );
 	}
-    
+
     private void setOnChildClickHandlerForIngredientsList( Ingredient[] ingredients ) {
-    	ingredientsList.setOnItemClickListener( 
-    			new IngredientListItemClickHandler( this, 
-    					 						    new IngredientListAdapter( getApplicationContext(), ingredients ) ) 
+    	ingredientsList.setOnItemClickListener(
+    			new IngredientListItemClickHandler( this,
+    					 						    new IngredientListAdapter( getApplicationContext(), ingredients ) )
     			);
     }
-    
+
     private void requestEffectData() {
-    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+		Intent intent = new Intent( this, AlchemyDataService.class );
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_ALL_EFFECTS_URI.toString() );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( effectResponseHandler ) );
     	showProgress();
     	startService( intent );
     }
-    
+
     private void setEffectSpinnerOnClickHandler() {
     	effectSpinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
     		public void onItemSelected( AdapterView<?> parentView, View selectedItemView, int possition, long id ) {
@@ -118,23 +118,23 @@ public class EffectSearchActivity extends Activity {
 			}
 		} );
     }
-    
+
     private void requestIngredientsWithEffect( String effectName ) {
-    	Intent intent = new Intent( "tes.alchemyreference.DATABASESERVICE" );
+		Intent intent = new Intent( this, AlchemyDataService.class );
     	intent.putExtra( AlchemyDataService.URI_KEY, ContentConstants.GET_INGREDIENTS_WITH_EFFECT_URI.toString() );
     	intent.putExtra( AlchemyDataService.EFFECT_KEY_NAME, effectName );
     	intent.putExtra( AlchemyDataService.MESSENGER_KEY, new Messenger( ingredientResponseHandler ) );
     	showProgress();
     	startService( intent );
     }
-    
+
     private void populateIngredientsList( Ingredient[] ingredients ) {
     	IngredientListAdapter adapter = new IngredientListAdapter( getApplicationContext(), ingredients );
     	setOnChildClickHandlerForIngredientsList( ingredients );
     	ingredientsList.setAdapter( adapter );
     	dismissProgress();
     }
-    
+
     /** Show a progress dialogue to tell the user that the monitors are being loaded */
     private void showProgress() {
     	String title = getResources().getString( R.string.loading_title );
@@ -144,7 +144,7 @@ public class EffectSearchActivity extends Activity {
     	progress.setMessage( message );
     	progress.show();
     }
-    
+
     /** Remove the loading monitors progress dialogue */
     private void dismissProgress() {
     	if( progress != null ) {

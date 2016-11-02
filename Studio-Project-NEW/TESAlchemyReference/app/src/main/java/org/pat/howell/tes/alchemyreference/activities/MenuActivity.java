@@ -22,7 +22,7 @@ public class MenuActivity extends Activity {
 	{
 		public void handleMessage( Message message  ) {
 			if( message.arg1 != RESULT_OK ) {
-				String toastMessage = "An error occured setting up the application database";
+				String toastMessage = "An error occurred setting up the application database";
 				Toast.makeText( instance.getApplication(), toastMessage, Toast.LENGTH_SHORT ).show();
 			}
 		}
@@ -48,7 +48,7 @@ public class MenuActivity extends Activity {
      * @param view - The clicked button
      */
     public void onEffectClicked( View view ) {
-    	Intent intent = new Intent( "tes.alchemyreference.EFFECTSEARCH" );
+    	Intent intent = new Intent( this, EffectSearchActivity.class );
     	startActivity( intent );
     }
     
@@ -57,12 +57,12 @@ public class MenuActivity extends Activity {
      * @param view - The clicked button
      */
     public void onIngredientClicked ( View view ) {
-    	Intent intent = new Intent( "tes.alchemyreference.INGREDIENTSEARCH" );
+        Intent intent = new Intent( this, IngredientSearchActivity.class );
     	startActivity( intent );
     }
     
     private void checkDatabaseStatus() {
-    	Intent intent = new Intent( "tes.alchemyreference.DATABASELOADING" );
+        Intent intent = new Intent( this, DatabaseLoadingService.class );
     	intent.putExtra( DatabaseLoadingService.MESSENGER_EXTRA,
     					 new Messenger( databaseSetupHander ) );
     	startService( intent );
