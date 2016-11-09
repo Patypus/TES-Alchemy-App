@@ -27,6 +27,7 @@
     
     <!-- Common Activity strings -->
     <string name="back_button">Back button</string>
+    <string name="home_button">Home button</string>
     
     <!-- Exception strings -->
     <string name="database_copying_error">An error occurred when copying the database. Error was: </string>

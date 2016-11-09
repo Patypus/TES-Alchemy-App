@@ -52,9 +52,14 @@ public class EffectSearchActivity extends Activity {
 		@SuppressWarnings("unchecked")
 		public void handleMessage( Message message ) {
 			ArrayList<Ingredient> response = (ArrayList<Ingredient>) message.obj;
+			//ArrayList<Ingredient> ingredientArray = new ArrayList<>();
+			//ingredientArray.add( new Ingredient( 0, "Please select...", "", "", "", "" ) );
+			//ingredientArray.addAll( response );
 			Ingredient[] ingredients = new Ingredient[response.size()];
 			ingredients = response.toArray( ingredients );
 			instance.populateIngredientsList( ingredients );
+			//Ingredient[] ingredients = new Ingredient[ingredientArray.size()];
+			//instance.populateIngredientsList( ingredientArray.toArray( ingredients ) );
 		}
 	};
 

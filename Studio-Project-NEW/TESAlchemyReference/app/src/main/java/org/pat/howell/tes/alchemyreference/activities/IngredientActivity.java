@@ -137,4 +137,13 @@ public class IngredientActivity extends Activity {
 	public void onBackClicked( View clickedButton ) {
 		finish();
 	}
+
+	/**
+	 * Click handler for the home button
+	 */
+	public void onHomeClicked( View clickedButton ) {
+		Intent intent = new Intent( this, MenuActivity.class );
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		startActivity( intent );
+	}
 }

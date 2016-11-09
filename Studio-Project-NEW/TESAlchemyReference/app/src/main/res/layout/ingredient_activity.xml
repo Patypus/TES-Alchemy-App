@@ -14,10 +14,24 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp" 
-        />
-	
-	<ImageView 
+        android:layout_marginTop="10dp"
+		android:layout_toLeftOf="@+id/ingredient_home_button"
+		android:layout_toStartOf="@+id/ingredient_home_button" />
+
+	<ImageView
+		android:id="@+id/ingredient_home_button"
+		android:layout_alignBottom="@id/ingredient_title"
+		android:layout_alignTop="@id/ingredient_title"
+		android:layout_toLeftOf="@+id/ingredient_back_button"
+		android:layout_toStartOf="@+id/ingredient_back_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_button_home"
+		android:contentDescription="@string/home_button"
+		android:onClick="onHomeClicked"
+		/>
+
+	<ImageView
         android:id="@+id/ingredient_back_button"
         android:layout_alignBottom="@id/ingredient_title"
 	    android:layout_alignParentRight="true"
