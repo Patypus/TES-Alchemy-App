@@ -118,7 +118,7 @@ public class IngredientActivity extends Activity {
     private void showProgress() {
     	String title = getResources().getString( R.string.loading_title );
     	String message = getResources().getString( R.string.loading_message );
-    	progress = new ProgressDialog( this, AlertDialog.THEME_HOLO_DARK );
+    	progress = new ProgressDialog( this, R.style.Progress_dialog );
     	progress.setTitle( title );
     	progress.setMessage( message );
     	progress.show();

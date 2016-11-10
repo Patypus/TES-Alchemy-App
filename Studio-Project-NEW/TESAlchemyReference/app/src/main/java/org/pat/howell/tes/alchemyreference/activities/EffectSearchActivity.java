@@ -7,6 +7,8 @@ import org.pat.howell.tes.alchemyreference.activities.support.IngredientListItem
 import org.pat.howell.tes.alchemyreference.data.AlchemyDataService;
 import org.pat.howell.tes.alchemyreference.data.ContentConstants;
 import org.pat.howell.tes.alchemyreference.data.entities.Ingredient;
+
+import android.content.res.Resources;
 import android.widget.AdapterView;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -90,8 +92,8 @@ public class EffectSearchActivity extends Activity {
 
     private void populateEffectSpinner( String[] effects ) {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>( this,
-																 R.layout.effect_spinner_item,
-																 effects );
+															R.layout.effect_spinner_item,
+															effects );
 		dismissProgress();
 		effectSpinner.setAdapter( adapter );
 	}
@@ -144,7 +146,7 @@ public class EffectSearchActivity extends Activity {
     private void showProgress() {
     	String title = getResources().getString( R.string.loading_title );
     	String message = getResources().getString( R.string.loading_message );
-    	progress = new ProgressDialog( this, AlertDialog.THEME_HOLO_DARK );
+    	progress = new ProgressDialog( this, R.style.Progress_dialog);
     	progress.setTitle( title );
     	progress.setMessage( message );
     	progress.show();

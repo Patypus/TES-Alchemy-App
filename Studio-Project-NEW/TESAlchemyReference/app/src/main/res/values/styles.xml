@@ -18,4 +18,11 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="Progress_dialog" parent="android:Theme.Black">
+        <item name="android:windowBackground">@android:color/darker_gray</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

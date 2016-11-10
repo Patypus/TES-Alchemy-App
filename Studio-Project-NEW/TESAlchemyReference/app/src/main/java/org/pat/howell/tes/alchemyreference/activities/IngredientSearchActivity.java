@@ -68,12 +68,12 @@ public class IngredientSearchActivity extends Activity {
 	
 	/** Show a progress dialogue to tell the user that the monitors are being loaded */
     private void showProgress() {
-    	String title = getResources().getString( R.string.loading_title );
-    	String message = getResources().getString( R.string.loading_message );
-    	progress = new ProgressDialog( this, AlertDialog.THEME_HOLO_DARK );
-    	progress.setTitle( title );
-    	progress.setMessage( message );
-    	progress.show();
+		String title = getResources().getString( R.string.loading_title );
+		String message = getResources().getString( R.string.loading_message );
+		progress = new ProgressDialog( this ); //, AlertDialog.THEME_HOLO_DARK );
+		progress.setTitle( title );
+		progress.setMessage( message );
+		progress.show();
     }
     
     /** Remove the loading monitors progress dialogue */
